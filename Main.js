@@ -5,6 +5,8 @@ var minimumResize = 1;
 
 // Controls
 var controls = {};
+controls.player1input = false;
+controls.player2input = false;
 
 var layer;
 var gameLayer;
@@ -12,7 +14,7 @@ var gameLayer;
 function startGame() {
     gameLayer = new GameLayer();
     layer=gameLayer;
-    setInterval(loop, 1000 / 30);
+    setInterval(loop, 1000 / 60);
 }
 
 function loop(){
