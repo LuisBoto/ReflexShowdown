@@ -1,4 +1,4 @@
-var ambientMusic = new Audio("res/ambient.mp3");
+var ambientMusic = new Audio("res/ambientWind.mp3");
 ambientMusic.loop = true;
 
 function playAmbientMusic() {

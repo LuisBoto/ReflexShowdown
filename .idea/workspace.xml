@@ -2,50 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="052241c5-8c58-4303-b394-025f3cb2096b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/RandomTetris.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/bloque1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/bloque2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/bloque3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/bloque4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/bloque5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/bloque6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/bloque_destruyendose.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/bloque_destruyendose.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/efecto_linea.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/efecto_nivel.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/enemigo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/fondo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/fondo.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/menu_fondo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/menu_fondo.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/musica_ambiente.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/pause.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/recolectable.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Espacio.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventosTeclado.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GestorAudio.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Globales.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ambient.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AudioManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AudioManager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Res.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Res.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graficos/Animacion.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layers/GameLayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/GameLayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layers/Layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/Layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layers/MenuLayer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelos/Bloque.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelos/BloqueAleatorio.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelos/Boton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelos/Enemigo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelos/Fondo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelos/Modelo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelos/Recolectable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelos/Texto.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,20 +19,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+            <state relative-caret-position="663">
+              <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/layers/GameLayer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/layers/GameLayer.js">
+        <entry file="file://$PROJECT_DIR$/src/AudioManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="85">
+              <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -96,11 +66,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Res.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -175,11 +141,11 @@
         <option value="$PROJECT_DIR$/src/models/Text.js" />
         <option value="$PROJECT_DIR$/src/models/TypeText.js" />
         <option value="$PROJECT_DIR$/src/blocks/MusicCommand.js" />
-        <option value="$PROJECT_DIR$/src/AudioManager.js" />
-        <option value="$PROJECT_DIR$/src/Res.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/Globals.js" />
         <option value="$PROJECT_DIR$/src/KeyboardEvents.js" />
+        <option value="$PROJECT_DIR$/src/Res.js" />
+        <option value="$PROJECT_DIR$/src/AudioManager.js" />
         <option value="$PROJECT_DIR$/src/layers/GameLayer.js" />
       </list>
     </option>
@@ -296,11 +262,12 @@
       <workItem from="1572201971434" duration="57000" />
       <workItem from="1572202236055" duration="35000" />
       <workItem from="1579776152983" duration="427000" />
+      <workItem from="1579776690894" duration="1154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99798000" />
+    <option name="totallyTimeSpent" value="100952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -353,79 +320,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/layers/MenuLayer.js" />
-    <entry file="file://$PROJECT_DIR$/res/storyBlocks/block1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/storyBlocks/block2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/Block.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/Command.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/storyBlocks/blockS.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/QuestionCommand.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/TextCommand.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/LoadCommand.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/WheelCommand.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="66" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/CenteredTextCommand.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/storyBlocks/block0.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/res/storyBlocks/block1.txt" />
+    <entry file="file://$PROJECT_DIR$/res/storyBlocks/block2.txt" />
+    <entry file="file://$PROJECT_DIR$/src/blocks/Block.js" />
+    <entry file="file://$PROJECT_DIR$/src/blocks/Command.js" />
+    <entry file="file://$PROJECT_DIR$/res/storyBlocks/blockS.txt" />
+    <entry file="file://$PROJECT_DIR$/src/blocks/QuestionCommand.js" />
+    <entry file="file://$PROJECT_DIR$/src/blocks/TextCommand.js" />
+    <entry file="file://$PROJECT_DIR$/src/blocks/LoadCommand.js" />
+    <entry file="file://$PROJECT_DIR$/src/blocks/WheelCommand.js" />
+    <entry file="file://$PROJECT_DIR$/src/blocks/CenteredTextCommand.js" />
+    <entry file="file://$PROJECT_DIR$/res/storyBlocks/block0.txt" />
     <entry file="file://$PROJECT_DIR$/src/models/Text.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -440,38 +345,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/blocks/MusicCommand.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AudioManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/blocks/MusicCommand.js" />
     <entry file="file://$PROJECT_DIR$/src/models/Model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Res.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/layers/GameLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -496,10 +374,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Res.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        <state relative-caret-position="663">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AudioManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layers/GameLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
         </state>
       </provider>
     </entry>
