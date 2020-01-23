@@ -6,7 +6,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <title>Random Tetris</title>
+    <title>Reflex Showdown</title>
     <style>
         * { padding: 0; margin: 0; }
         canvas {
@@ -14,31 +14,26 @@
             display: block;
             margin: 0 auto;
         }
+        body {
+            background: #ffffff;
+        }
     </style>
 </head>
 <body>
 
-<canvas id="canvas" width="900" height="600"></canvas>
+<canvas id="canvas" width="1920" height="1080"></canvas>
 
-<script src="./src/Espacio.js"></script>
-<script src="./src/Globales.js"></script>
-<script src="./src/GestorAudio.js"></script>
-<script src="./src/modelos/Modelo.js"></script>
-    <script src="./src/modelos/Enemigo.js"></script>
-    <script src="./src/modelos/Recolectable.js"></script>
-    <script src="./src/modelos/Boton.js"></script>
-    <script src="./src/modelos/Bloque.js"></script>
-    <script src="./src/modelos/BloqueAleatorio.js"></script>
-    <script src="./src/modelos/Fondo.js"></script>
-    <script src="./src/modelos/Texto.js"></script>
+
+<script src="src/Globals.js"></script>
+<script src="src/AudioManager.js"></script>
+<script src="src/models/Model.js"></script>
+    <script src="src/models/Text.js"></script>
+        <script src="src/models/TypeText.js"></script>
 
 <script src="./src/layers/Layer.js"></script>
     <script src="./src/layers/GameLayer.js"></script>
-    <script src="./src/layers/MenuLayer.js"></script>
 
-<script src="./src/graficos/Animacion.js"></script>
-
-<script src="./src/EventosTeclado.js"></script>
+<script src="src/KeyboardEvents.js"></script>
 <script src="./src/Res.js"></script>
 <script src="./Main.js"></script>
 
