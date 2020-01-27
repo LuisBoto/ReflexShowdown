@@ -19,7 +19,13 @@ function playLaunchSound() {
     launchSound.play();
 }
 
-function stopMusic() {
+function restartSound() {
     ambientMusic.pause();
+    ambientMusic.currentTime = 0;
+    launchSound.pause();
+    launchSound.currentTime = 0;
+    matchStart.pause();
+    matchStart.currentTime = 0;
 }
+
 

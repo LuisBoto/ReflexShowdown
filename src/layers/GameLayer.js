@@ -2,17 +2,19 @@ class GameLayer extends Layer {
 
     constructor(mode) {
         super();
-        this.initiate(mode);
-        playAmbientMusic();
+        this.mode = mode;
+        this.initiate();
     }
 
-    initiate(mode) {
+    initiate() {
+        restartSound();
+        playAmbientMusic();
         this.background = new Model(images.backgroud, 1920*0.5, 1080*0.5);
         this.player1 = new Model(images.player1, 1920*0.2, 1080*0.63);
         this.player2 = new Model(images.player2, 1920*0.8, 1080*0.63);
         this.exclamation = new Model(images.exclamation, 1920*0.5, 1080*0.5);
         this.singleplayer = false;
-        if (mode==1)
+        if (this.mode==1)
             this.singleplayer=true;
         this.awaitingInput = false;
         this.launch = false;
@@ -23,7 +25,7 @@ class GameLayer extends Layer {
     }
 
     update() {
-        if (Math.random()*1000 < 10 && this.awaitingInput)
+        if (Math.random()*10000 < 10 && this.awaitingInput)
             this.launch = true;
         if (this.launch && !this.launched) {
             this.launched = true;
@@ -31,6 +33,7 @@ class GameLayer extends Layer {
         }
         if (this.decided && this.launch) { //A player already attacked
             //Winner animation
+            this.initiate();
         }
     }
 
@@ -54,8 +57,10 @@ class GameLayer extends Layer {
     processControls() {
         if (!this.awaitingInput)
             return;
-        //TODO: Rework this to allow for ties
+
+        console.log(controls.player1input);
         if (controls.player1input && !controls.player2input) {
+            controls.player1input = false;
             if (!this.launch)
                 this.playTie();
             this.attacker = 1;
@@ -64,6 +69,7 @@ class GameLayer extends Layer {
             return;
         }
         if (!controls.player1input && controls.player2input) {
+            controls.player2input = false;
             if (!this.launch)
                 this.playTie();
             this.attacker = 2;
@@ -75,6 +81,9 @@ class GameLayer extends Layer {
 
     playTie() {
         //A player moved before the signal
-        this.initiate();
+        this.background = new Model(images.inverseBackground, 1920*0.5, 1080*0.5);
+        window.setTimeout(function(){
+                this.initiate(this.mode); }
+            .bind(this), 3000);
     }
 }

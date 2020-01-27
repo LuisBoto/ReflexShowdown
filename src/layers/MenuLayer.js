@@ -10,15 +10,15 @@ class MenuLayer extends Layer {
 
     processControls( ) {
         if (controls.singleplayer) {
+            controls.singleplayer = false;
             gameLayer = new GameLayer(1);
             layer = gameLayer;
-            controls.singleplayer = false;
         }
 
         else if (controls.multiplayer) {
+            controls.multiplayer = false;
             gameLayer = new GameLayer(2);
             layer = gameLayer;
-            controls.multiplayer = false;
         }
     }
 
