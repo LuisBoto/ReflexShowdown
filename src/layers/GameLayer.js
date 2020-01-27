@@ -1,15 +1,18 @@
 class GameLayer extends Layer {
 
-    constructor() {
+    constructor(mode) {
         super();
-        this.initiate();
+        this.initiate(mode);
         playAmbientMusic();
     }
 
-    initiate() {
+    initiate(mode) {
         this.background = new Model(images.backgroud, 1920*0.5, 1080*0.5);
         this.player1 = new Model(images.player1, 1920*0.2, 1080*0.63);
         this.player2 = new Model(images.player2, 1920*0.8, 1080*0.63);
+        this.singleplayer = false;
+        if (mode==1)
+            this.singleplayer=true;
         this.awaitingInput = false;
         this.launch = false;
         this.decided = false;

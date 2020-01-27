@@ -13,6 +13,12 @@ function onKeyDown( event) {
             controls.player1input = true;
         if (event.keyCode == 76) //'L' for player 2
             controls.player2input = true;
+        if (event.keyCode == 81) //'Q' for singleplayer
+            controls.singleplayer = true;
+        if (event.keyCode == 80) //'P' for multiplayer
+            controls.multiplayer = true;
+        if (event.keyCode == 27) //Escape key
+            controls.exit = true;
     }
 }
 
