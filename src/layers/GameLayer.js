@@ -17,6 +17,7 @@ class GameLayer extends Layer {
         this.launch = false;
         this.decided = false;
         this.attacker;
+        this.playStartAnimation();
     }
 
     update() {
@@ -31,6 +32,10 @@ class GameLayer extends Layer {
         this.background.draw();
         this.player1.draw();
         this.player2.draw();
+    }
+
+    playStartAnimation() {
+        playMatchStart();
     }
 
     processControls() {
