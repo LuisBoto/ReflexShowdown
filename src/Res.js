@@ -1,6 +1,7 @@
 var cache = [];
 var images = {
     menu_background : "res/menubackground.png",
+    exclamation : "res/exclamation.png",
     backgroud : "res/background.png",
     player1: "res/player1.png",
     player2: "res/player2.png",
