@@ -13,22 +13,18 @@ class GameLayer extends Layer {
         this.player1 = new Model(images.player1, 1920*0.2, 1080*0.63);
         this.player2 = new Model(images.player2, 1920*0.8, 1080*0.63);
         this.exclamation = new Model(images.exclamation, 1920*0.5, 1080*0.5);
-        this.singleplayer = false;
-        if (this.mode==1)
-            this.singleplayer=true;
+        this.singleplayer = this.mode==1;
+
         this.awaitingInput = false;
         this.launch = false;
         this.decided = false;
-        this.launched = false;
-        this.attacker;
+
         this.playStartAnimation();
     }
 
     update() {
-        if (Math.random()*10000 < 10 && this.awaitingInput)
+        if (Math.random()*10000 < 10 && this.awaitingInput) {
             this.launch = true;
-        if (this.launch && !this.launched) {
-            this.launched = true;
             playLaunchSound();
         }
         if (this.decided && this.launch) { //A player already attacked
@@ -61,7 +57,7 @@ class GameLayer extends Layer {
         console.log(controls.player1input);
         if (controls.player1input && !controls.player2input) {
             controls.player1input = false;
-            if (!this.launch)
+            if (!this.launch) 
                 this.playTie();
             this.attacker = 1;
             this.decided = true;
