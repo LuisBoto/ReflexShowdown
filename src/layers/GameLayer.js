@@ -23,7 +23,7 @@ class GameLayer extends Layer {
     }
 
     update() {
-        if (Math.random()*10000 < 10 && this.awaitingInput) {
+        if (Math.random()*1000 < 10 && this.awaitingInput && !this.launch) {
             this.launch = true;
             playLaunchSound();
         }
@@ -37,7 +37,7 @@ class GameLayer extends Layer {
         this.background.draw();
         this.player1.draw();
         this.player2.draw();
-        if (this.launched && !this.decided) {
+        if (this.launch && !this.decided) {
             this.exclamation.draw();
         }
     }
@@ -47,19 +47,17 @@ class GameLayer extends Layer {
         window.setTimeout(function(){
                 this.awaitingInput = true;
                 console.log("Awaiting input");
-            }.bind(this), 3000);
+            }.bind(this), 2000);
     }
 
     processControls() {
         if (!this.awaitingInput)
             return;
 
-        console.log(controls.player1input);
         if (controls.player1input && !controls.player2input) {
             controls.player1input = false;
             if (!this.launch) 
                 this.playTie();
-            this.attacker = 1;
             this.decided = true;
             this.awaitingInput = false;
             return;
@@ -68,7 +66,6 @@ class GameLayer extends Layer {
             controls.player2input = false;
             if (!this.launch)
                 this.playTie();
-            this.attacker = 2;
             this.decided = true;
             this.awaitingInput = false;
             return;
@@ -78,6 +75,7 @@ class GameLayer extends Layer {
     playTie() {
         //A player moved before the signal
         this.background = new Model(images.inverseBackground, 1920*0.5, 1080*0.5);
+        playLaunchSound();
         window.setTimeout(function(){
                 this.initiate(this.mode); }
             .bind(this), 3000);

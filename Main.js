@@ -30,7 +30,6 @@ function loop(){
 window.addEventListener('load', resize, false);
 
 function resize() {
-    console.log("Resize")
     var resizeWidth = parseFloat(window.innerWidth / canvas.width);
     var resizeHeight = parseFloat(window.innerHeight / canvas.height);
 
