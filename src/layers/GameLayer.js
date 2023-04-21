@@ -10,24 +10,24 @@ class GameLayer extends Layer {
         restartSound();
         playAmbientMusic();
         this.background = new Model(images.backgroud, 1920*0.5, 1080*0.5);
-        this.player1 = new Model(images.player1, 1920*0.2, 1080*0.63);
-        this.player2 = new Model(images.player2, 1920*0.8, 1080*0.63);
+        this.player1 = new Player(images.player1, true);
+        this.player2 = new Player(images.player2, false);
         this.exclamation = new Model(images.exclamation, 1920*0.5, 1080*0.5);
         this.singleplayer = this.mode==1;
 
         this.awaitingInput = false;
-        this.launch = false;
+        this.signal = false;
         this.decided = false;
 
         this.playStartAnimation();
     }
 
     update() {
-        if (Math.random()*1000 < 10 && this.awaitingInput && !this.launch) {
-            this.launch = true;
+        if (Math.random()*1000 < 10 && this.awaitingInput && !this.signal) {
+            this.signal = true;
             playLaunchSound();
         }
-        if (this.decided && this.launch) { //A player already attacked
+        if (this.decided && this.signal) { //A player already attacked
             //Winner animation
             this.initiate();
         }
@@ -37,7 +37,7 @@ class GameLayer extends Layer {
         this.background.draw();
         this.player1.draw();
         this.player2.draw();
-        if (this.launch && !this.decided) {
+        if (this.signal && !this.decided) {
             this.exclamation.draw();
         }
     }
@@ -54,22 +54,14 @@ class GameLayer extends Layer {
         if (!this.awaitingInput)
             return;
 
-        if (controls.player1input && !controls.player2input) {
-            controls.player1input = false;
-            if (!this.launch) 
-                this.playTie();
-            this.decided = true;
-            this.awaitingInput = false;
-            return;
+        this.decided = controls.player1input || controls.player2input;
+        if (this.decided && !this.signal) {
+            this.playTie()
         }
-        if (!controls.player1input && controls.player2input) {
-            controls.player2input = false;
-            if (!this.launch)
-                this.playTie();
-            this.decided = true;
-            this.awaitingInput = false;
-            return;
-        }
+        this.awaitingInput = !this.decided;
+
+        controls.player1input = false;
+        controls.player2input = false;
     }
 
     playTie() {

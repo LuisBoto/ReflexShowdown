@@ -18,7 +18,7 @@ class Model {
         return false;
     }
 
-    draw(){
+    draw() {
         context.drawImage(this.image,
             this.x - this.width /2,
             this.y - this.height /2);
