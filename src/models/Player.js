@@ -5,9 +5,12 @@ class Player extends Model {
         let y = 1080*0.63;
         super(imageRoute, x, y);
         this.control = control;
+        this.initiate();
+    }
+
+    initiate() {
         this.time = -1;
-        this.width = this.image.width;
-        this.height = this.image.height;
+        this.control.process();
     }
 
     doTurn() {

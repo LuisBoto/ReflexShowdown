@@ -1,22 +1,12 @@
 // Canvas & context
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
-var minimumResize = 1;
+let canvas = document.getElementById("canvas");
+let context = canvas.getContext("2d");
+let minimumResize = 1;
 
-// Controls
-/*var controls = {};
-controls.player1input = false;
-controls.player2input = false;
-controls.singleplayer = false;
-controls.multiplayer = false;
-controls.exit = false;*/
-
-var layer;
-var gameLayer;
+let layer;
 
 function startGame() {
-    mLayer = new MenuLayer();
-    layer=mLayer;
+    layer = new MenuLayer();
     setInterval(loop, 1000 / 60);
 }
 

@@ -1,8 +1,8 @@
 class GameLayer extends Layer {
 
-    constructor(mode) {
+    constructor(players) {
         super();
-        this.mode = mode;
+        this.players = players;
         this.initiate();
     }
 
@@ -10,14 +10,12 @@ class GameLayer extends Layer {
         restartSound();
         playAmbientMusic();
         this.background = new Model(images.backgroud, 1920*0.5, 1080*0.5);
-        this.player1 = new Player(images.player1, true, player1Control);
-        this.player2 = new Player(images.player2, false, player2Control);
         this.exclamation = new Model(images.exclamation, 1920*0.5, 1080*0.5);
-        this.singleplayer = this.mode==1;
 
         this.awaitingInput = false;
         this.signal = false;
         this.decided = false;
+        this.players.forEach((p) => p.initiate())
 
         this.playStartAnimation();
     }
@@ -35,11 +33,10 @@ class GameLayer extends Layer {
 
     draw() {
         this.background.draw();
-        this.player1.draw();
-        this.player2.draw();
-        if (this.signal && !this.decided) {
+        this.players.forEach(player => player.draw());
+
+        if (this.signal && !this.decided) 
             this.exclamation.draw();
-        }
     }
 
     playStartAnimation() {
@@ -52,15 +49,13 @@ class GameLayer extends Layer {
 
     processControls() {
         if (!this.awaitingInput) {
-            this.player1.control.process();
-            this.player2.control.process();
+            this.players.forEach(player => player.control.process());
             return;
         }
 
-        this.player1.doTurn();
-        this.player2.doTurn();
+        this.players.forEach(player => player.doTurn());
 
-        this.decided = this.player1.hasAttacked || this.player2.hasAttacked;
+        this.decided = this.players.filter((p) => p.hasAttacked()).length > 0;
         if (this.decided && !this.signal) {
             this.playTie()
         }

@@ -24,7 +24,7 @@ class Model {
             this.y - this.height /2);
     }
 
-    setImage() {
+    setImage(imageRoute) {
         this.image = cache[imageRoute];
         this.width = this.image.width;
         this.height = this.image.height;
