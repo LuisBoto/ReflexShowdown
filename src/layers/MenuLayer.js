@@ -9,14 +9,14 @@ class MenuLayer extends Layer {
     }
 
     processControls( ) {
-        if (controls.singleplayer) {
-            controls.singleplayer = false;
+        if (singlePlayerControl.pressed) {
+            singlePlayerControl.process();
             gameLayer = new GameLayer(1);
             layer = gameLayer;
         }
 
-        else if (controls.multiplayer) {
-            controls.multiplayer = false;
+        else if (multiPlayerControl.pressed) {
+            multiPlayerControl.process();
             gameLayer = new GameLayer(2);
             layer = gameLayer;
         }

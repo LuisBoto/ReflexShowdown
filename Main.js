@@ -4,12 +4,12 @@ var context = canvas.getContext("2d");
 var minimumResize = 1;
 
 // Controls
-var controls = {};
+/*var controls = {};
 controls.player1input = false;
 controls.player2input = false;
 controls.singleplayer = false;
 controls.multiplayer = false;
-controls.exit = false;
+controls.exit = false;*/
 
 var layer;
 var gameLayer;

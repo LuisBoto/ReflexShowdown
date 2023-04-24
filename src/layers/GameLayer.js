@@ -10,8 +10,8 @@ class GameLayer extends Layer {
         restartSound();
         playAmbientMusic();
         this.background = new Model(images.backgroud, 1920*0.5, 1080*0.5);
-        this.player1 = new Player(images.player1, true);
-        this.player2 = new Player(images.player2, false);
+        this.player1 = new Player(images.player1, true, player1Control);
+        this.player2 = new Player(images.player2, false, player2Control);
         this.exclamation = new Model(images.exclamation, 1920*0.5, 1080*0.5);
         this.singleplayer = this.mode==1;
 
@@ -51,17 +51,20 @@ class GameLayer extends Layer {
     }
 
     processControls() {
-        if (!this.awaitingInput)
+        if (!this.awaitingInput) {
+            this.player1.control.process();
+            this.player2.control.process();
             return;
+        }
 
-        this.decided = controls.player1input || controls.player2input;
+        this.player1.doTurn();
+        this.player2.doTurn();
+
+        this.decided = this.player1.hasAttacked || this.player2.hasAttacked;
         if (this.decided && !this.signal) {
             this.playTie()
         }
         this.awaitingInput = !this.decided;
-
-        controls.player1input = false;
-        controls.player2input = false;
     }
 
     playTie() {
