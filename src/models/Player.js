@@ -20,6 +20,10 @@ class Player extends Model {
         }
     }
 
+    skipTurn() {
+        this.control.process();
+    }
+
     hasAttacked() {
         return this.time != -1;
     }

@@ -25,10 +25,24 @@ class GameLayer extends Layer {
             this.signal = true;
             playLaunchSound();
         }
-        if (this.decided && this.signal) { //A player already attacked
-            //Winner animation
-            this.initiate();
+
+        this.decided = this.awaitingInput && this.players.filter((p) => p.hasAttacked()).length > 0;
+        if (this.decided) {
+            this.awaitingInput = false;
+            if (this.signal) { // A player attacked within opportunity window
+                //Winner animation
+                this.initiate();
+            } else {
+                this.playTie()
+            }
         }
+    }
+
+    processControls() {
+        if (!this.awaitingInput) 
+            this.players.forEach(player => player.skipTurn());
+        else
+            this.players.forEach(player => player.doTurn());
     }
 
     draw() {
@@ -45,21 +59,6 @@ class GameLayer extends Layer {
                 this.awaitingInput = true;
                 console.log("Awaiting input");
             }.bind(this), 2000);
-    }
-
-    processControls() {
-        if (!this.awaitingInput) {
-            this.players.forEach(player => player.control.process());
-            return;
-        }
-
-        this.players.forEach(player => player.doTurn());
-
-        this.decided = this.players.filter((p) => p.hasAttacked()).length > 0;
-        if (this.decided && !this.signal) {
-            this.playTie()
-        }
-        this.awaitingInput = !this.decided;
     }
 
     playTie() {
