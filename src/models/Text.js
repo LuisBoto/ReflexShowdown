@@ -1,21 +1,18 @@
 class Text {
 
-    constructor(value, x, y) {
+    constructor(value, x, y, centered) {
         this.value = value;
         this.x = x;
         this.y = y;
-        this.center = false;
-        if (x==1920*0.5) {
-            this.center = true;
-        }
+        this.center = centered;
     }
 
     setValue(value) {
         this.value = value;
     }
 
-    draw (){
-        context.font = "25px Monospace";
+    draw() {
+        context.font = "30px monospace";
         context.fillStyle = "white";
         context.textAlign = "left";
         if (this.center)

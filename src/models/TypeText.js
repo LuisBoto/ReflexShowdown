@@ -1,11 +1,11 @@
 class TypeText extends Text {
 
-    constructor(value, x, y) {
-        super(value, x, y);
+    constructor(value, x, y, centered) {
+        super(value, x, y, centered);
         this.counter = 0;
     }
 
-    draw (){
+    draw() {
         if (this.counter < this.value.length)
             this.counter=this.counter+3;
         context.font = "25px Monospace";

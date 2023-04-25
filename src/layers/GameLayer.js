@@ -9,7 +9,7 @@ class GameLayer extends Layer {
     initiate() {
         restartSound();
         playAmbientMusic();
-        this.background = new Model(images.backgroud, 1920*0.5, 1080*0.5);
+        this.background = new Model(images.background, 1920*0.5, 1080*0.5);
         this.exclamation = new Model(images.exclamation, 1920*0.5, 1080*0.5);
 
         this.awaitingInput = false;
