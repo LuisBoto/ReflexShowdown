@@ -1,4 +1,11 @@
 import { Layer } from "./Layer.js";
+import { GameLayer } from "./GameLayer.js";
+import { Model } from "../models/Model.js";
+import { images } from "../Res.js";
+import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
+import { Player } from "../models/Player.js";
+import { Key } from "../models/Key.js";
+import { multiPlayerControl, singlePlayerControl, player1Control, player2Control } from "../KeyboardEvents.js"
 
 class MenuLayer extends Layer {
     constructor() {
@@ -16,11 +23,11 @@ class MenuLayer extends Layer {
     processControls() {
         if (singlePlayerControl.pressed) {
             singlePlayerControl.process();
-            layer = new GameLayer([new Player(images.player1, true, player1Control), new Player(images.player2, false, player2Control)]);
+            setLayer(new GameLayer([new Player(images.player1, true, player1Control), new Player(images.player2, false, player2Control)]));
         }
         else if (multiPlayerControl.pressed) {
             multiPlayerControl.process();
-            layer = new GameLayer([new Player(images.player1, true, player1Control), new Player(images.player2, false, player2Control)]);
+            setLayer(new GameLayer([new Player(images.player1, true, player1Control), new Player(images.player2, false, player2Control)]));
         }
 
     }

@@ -1,5 +1,8 @@
 import { Layer } from "./Layer.js";
 import { playAmbientMusic, playLaunchSound, playMatchStart, restartSound } from "../AudioManager.js";
+import { images } from "../Res.js";
+import { Model } from "../models/Model.js";
+import { canvasHeight, canvasWidth } from "../../Main.js";
 
 class GameLayer extends Layer {
 

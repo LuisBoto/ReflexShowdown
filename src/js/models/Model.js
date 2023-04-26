@@ -1,3 +1,6 @@
+import { cache } from "../Res.js";
+import { context } from "../../Main.js";
+
 class Model {
 
     constructor(imageRoute, x, y) {

@@ -1,3 +1,7 @@
+import { images } from "../Res.js";
+import { Model } from "./Model.js";
+import { Text } from "./Text.js";
+
 class Key extends Model {
 
     constructor(x, y, keyText, keyTag) {
@@ -13,4 +17,8 @@ class Key extends Model {
         if (this.tagged)
             this.tag.draw();
     }
+}
+
+export {
+    Key
 }

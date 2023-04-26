@@ -1,3 +1,5 @@
+import { Text } from "./Text.js";
+
 class TypeText extends Text {
 
     constructor(value, x, y, centered) {
@@ -16,4 +18,8 @@ class TypeText extends Text {
         context.fillText(this.value.substring(0, this.counter), this.x, this.y);
     }
 
+}
+
+export {
+    TypeText
 }

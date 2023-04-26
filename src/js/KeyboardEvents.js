@@ -36,3 +36,12 @@ function onKeyUp(event) {
     var pos = keys.indexOf(event.keyCode);
     keys.splice( pos, 1);
 }
+
+export {
+    Control,
+    player1Control,
+    player2Control,
+    singlePlayerControl,
+    multiPlayerControl,
+    escapeKeyControl
+}

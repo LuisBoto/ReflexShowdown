@@ -1,26 +1,39 @@
+import menuBackgroundFile from "../res/menubackground.png";
+import exclamationFile from "../res/exclamation.png";
+import backgroundFile from "../res/background.png";
+import inverseBackgroundFile from "../res/invertBackground.png";
+import player1File from "../res/player1.png";
+import player2File from "../res/player2.png";
+import keyFile from "../res/key.png";
+
 var cache = [];
 var images = {
-    menu_background: "res/menubackground.png",
-    exclamation: "res/exclamation.png",
-    background: "res/background.png",
-    inverseBackground: "res/invertBackground.png",
-    player1: "res/player1.png",
-    player2: "res/player2.png",
-    key: "res/key.png"
+    menuBackground: menuBackgroundFile,
+    exclamation: exclamationFile,
+    background: backgroundFile,
+    inverseBackground: inverseBackgroundFile,
+    player1: player1File,
+    player2: player2File,
+    key: keyFile,
 };
 
 var routeImages = Object.values(images);
-loadImages(0);
 
-function loadImages(index){
+function loadImages(index, callback) {
     cache[routeImages[index]] = new Image();
     cache[routeImages[index]].src = routeImages[index];
-    cache[routeImages[index]].onload = function(){
-        if ( index < routeImages.length-1 ){
+    cache[routeImages[index]].onload = function() {
+        if ( index < routeImages.length-1 ) {
             index++;
-            loadImages(index);
-        } else {
-            startGame();
+            loadImages(index++, callback);
         }
+        else
+            callback();
     }
+}
+
+export {
+    loadImages,
+    images,
+    cache
 }

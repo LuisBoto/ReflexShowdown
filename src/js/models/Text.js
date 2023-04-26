@@ -1,3 +1,5 @@
+import { context } from "../../Main";
+
 class Text {
 
     constructor(value, x, y, centered) {
@@ -20,4 +22,8 @@ class Text {
         context.fillText(this.value, this.x, this.y);
     }
 
+}
+
+export {
+    Text
 }
