@@ -12,6 +12,10 @@ class Control {
     process() {
         this.pressed = false;
     }
+
+    getCharacterFromKeyCode() {
+        return String.fromCharCode((96 <= this.keyCode && this.keyCode <= 105)? this.keyCode-48 : this.keyCode);
+    }
 }
 
 let keys = [];
@@ -26,7 +30,7 @@ let controls = [player1Control, player2Control, singlePlayerControl, multiPlayer
 window.addEventListener('keydown', onKeyDown, false);
 window.addEventListener('keyup', onKeyUp, false);
 
-function onKeyDown( event) {
+function onKeyDown(event) {
     controls
         .filter((control) => control.keyCode == event.keyCode)
         .map((control) => control.onKey())

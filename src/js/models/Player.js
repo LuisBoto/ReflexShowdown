@@ -1,5 +1,6 @@
 import { Model } from "./Model.js";
 import { canvasHeight, canvasWidth } from "../../Main.js";
+import { Key } from "./Key.js";
 
 class Player extends Model {
 
@@ -14,6 +15,12 @@ class Player extends Model {
     initiate() {
         this.time = -1;
         this.control.process();
+        this.key = new Key(this.x, this.y+this.height*0.75, this.control.getCharacterFromKeyCode());
+    }
+
+    draw() {
+        super.draw();
+        this.key.draw();
     }
 
     doTurn() {
