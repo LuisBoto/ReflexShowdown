@@ -2,8 +2,8 @@ class Model {
 
     constructor(imageRoute, x, y) {
         this.image = cache[imageRoute];
-        this.x = x;
-        this.y = y;
+        this.x = Math.floor(x);
+        this.y = Math.floor(y);
         this.width = this.image.width;
         this.height = this.image.height;
     }
@@ -22,6 +22,12 @@ class Model {
         context.drawImage(this.image,
             this.x - this.width /2,
             this.y - this.height /2);
+    }
+
+    drawResize(imageWidth, imageHeight) {
+        context.drawImage(this.image,
+            this.x - imageWidth/2, this.y - imageHeight/2,
+            imageWidth, imageHeight);
     }
 
     setImage(imageRoute) {

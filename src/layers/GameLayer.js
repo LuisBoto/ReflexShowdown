@@ -9,8 +9,8 @@ class GameLayer extends Layer {
     initiate() {
         restartSound();
         playAmbientMusic();
-        this.background = new Model(images.background, 1920*0.5, 1080*0.5);
-        this.exclamation = new Model(images.exclamation, 1920*0.5, 1080*0.5);
+        this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
+        this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
 
         this.awaitingInput = false;
         this.signal = false;
@@ -46,7 +46,7 @@ class GameLayer extends Layer {
     }
 
     draw() {
-        this.background.draw();
+        this.background.drawResize(canvasWidth, canvasHeight);
         this.players.forEach(player => player.draw());
 
         if (this.signal && !this.decided) 
@@ -63,7 +63,7 @@ class GameLayer extends Layer {
 
     playTie() {
         //A player moved before the signal
-        this.background = new Model(images.inverseBackground, 1920*0.5, 1080*0.5);
+        this.background = new Model(images.inverseBackground, canvasWidth*0.5, canvasHeight*0.5);
         playLaunchSound();
         window.setTimeout(function(){
                 this.initiate(this.mode); }
