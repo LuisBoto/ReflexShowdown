@@ -1,3 +1,5 @@
+import { Layer } from "./Layer.js";
+
 class MenuLayer extends Layer {
     constructor() {
         super();
@@ -29,4 +31,8 @@ class MenuLayer extends Layer {
         this.multiPlayerKey.draw();
         this.howToKey.draw();
     }
+}
+
+export {
+    MenuLayer
 }

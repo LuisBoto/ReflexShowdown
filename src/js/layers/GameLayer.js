@@ -1,3 +1,6 @@
+import { Layer } from "./Layer.js";
+import { playAmbientMusic, playLaunchSound, playMatchStart, restartSound } from "../AudioManager.js";
+
 class GameLayer extends Layer {
 
     constructor(players) {
@@ -69,4 +72,8 @@ class GameLayer extends Layer {
                 this.initiate(this.mode); }
             .bind(this), 3000);
     }
+}
+
+export {
+    GameLayer
 }

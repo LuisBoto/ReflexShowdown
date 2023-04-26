@@ -1,3 +1,5 @@
+import { Model } from "./Model.js";
+
 class Player extends Model {
 
     constructor(imageRoute, isLeftSide, control) {
@@ -29,4 +31,8 @@ class Player extends Model {
     }
 
     
+}
+
+export {
+    Player
 }

@@ -28,4 +28,11 @@ function restartSound() {
     matchStart.currentTime = 0;
 }
 
+export {
+    playAmbientMusic,
+    playMatchStart,
+    playLaunchSound,
+    restartSound
+}
+
 

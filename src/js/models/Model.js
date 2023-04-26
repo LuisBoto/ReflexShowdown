@@ -36,3 +36,7 @@ class Model {
         this.height = this.image.height;
     }
 }
+
+export {
+    Model
+}
