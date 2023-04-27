@@ -10,7 +10,7 @@ class TypeText extends Text {
 
     draw() {
         if (this.counter < this.value.length)
-            this.counter=this.counter+3;
+            this.counter=this.counter+1;
         context.font = "25px Monospace";
         context.fillStyle = "white";
         context.textAlign = "left";
