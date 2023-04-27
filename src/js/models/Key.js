@@ -52,6 +52,12 @@ class Key extends Model {
         if (this.keyControl.lifted)
             this.isPressed = false;
     }
+
+    setX(x) {
+        this.x = x;
+        this.text.x = x;
+        if (this.tagged) this.tag.x = x;
+    }
 }
 
 export {

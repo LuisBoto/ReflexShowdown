@@ -6,6 +6,7 @@ import player1File from "../res/player1.png";
 import player2File from "../res/player2.png";
 import keyFile from "../res/key.png";
 import pressedKeyFile from "../res/pressedKey.png";
+import slashFile from "../res/slash.png";
 
 var cache = [];
 var images = {
@@ -17,6 +18,7 @@ var images = {
     player2: player2File,
     key: keyFile,
     pressedKey: pressedKeyFile,
+    slash: slashFile,
 };
 
 var routeImages = Object.values(images);
