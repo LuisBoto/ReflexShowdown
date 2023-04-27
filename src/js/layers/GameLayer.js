@@ -27,7 +27,7 @@ class GameLayer extends Layer {
     }
 
     update() {
-        if (Math.random()*1000 < 10 && this.awaitingInput && !this.signal) {
+        if (Math.random()*1000 < 5 && this.awaitingInput && !this.signal) {
             this.signal = true;
             playLaunchSound();
         }

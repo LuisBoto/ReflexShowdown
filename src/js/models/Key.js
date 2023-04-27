@@ -12,15 +12,20 @@ class Key extends Model {
         
         this.tagged = keyTag;
         if (this.tagged) this.tag = new TypeText(keyTag, x, y+this.height, true);
-        this.pressedFrames = 0;
+        this.isPressed = 0;
+        this.pressedY = this.y+4;
     }
 
     draw() {
         this.processPressedFrames();
-        if (this.pressedFrames > 0) 
+        if (this.isPressed) {
             this.setImage(images.pressedKey);
-        else 
+            this.y = this.pressedY;
+        }
+        else {
             this.setImage(images.key);
+            this.y = this.pressedY - 4;
+        }
         super.draw();
 
         this.drawText();
@@ -28,8 +33,8 @@ class Key extends Model {
     }
 
     drawText() {
-        if (this.pressedFrames > 0) {
-            this.text.y += 3;
+        if (this.isPressed) {
+            this.text.y = this.pressedY+4;
             this.text.draw("#ffffab");
         } else
             this.text.draw();
@@ -43,9 +48,9 @@ class Key extends Model {
 
     processPressedFrames() {
         if (this.keyControl.pressed)
-            this.pressedFrames = 6;
-        else
-            this.pressedFrames -= 1;
+            this.isPressed = true;
+        if (this.keyControl.lifted)
+            this.isPressed = false;
     }
 }
 

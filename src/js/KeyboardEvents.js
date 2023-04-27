@@ -3,10 +3,12 @@ class Control {
     constructor(keyCode) {
         this.keyCode = keyCode;
         this.pressed = false;
+        this.lifted = true;
     }
 
     onKey() {
         this.pressed = true;
+        this.lifted = false;
     }
 
     consume() {
@@ -15,12 +17,14 @@ class Control {
         return aux;
     }
 
+    onKeyUp() {
+        this.lifted = true;
+    }
+
     getCharacterFromKeyCode() {
         return String.fromCharCode((96 <= this.keyCode && this.keyCode <= 105)? this.keyCode-48 : this.keyCode);
     }
 }
-
-let keys = [];
 
 let player1Control = new Control(65);
 let player2Control = new Control(76);
@@ -35,12 +39,13 @@ window.addEventListener('keyup', onKeyUp, false);
 function onKeyDown(event) {
     controls
         .filter((control) => control.keyCode == event.keyCode)
-        .map((control) => control.onKey())
+        .forEach((control) => control.onKey())
 }
 
 function onKeyUp(event) {
-    var pos = keys.indexOf(event.keyCode);
-    keys.splice( pos, 1);
+    controls
+        .filter((control) => control.keyCode == event.keyCode)
+        .forEach((control) => control.onKeyUp())
 }
 
 export {
