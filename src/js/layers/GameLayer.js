@@ -38,14 +38,13 @@ class GameLayer extends Layer {
 
         if (!this.decided)
             this.decided = this.awaitingInput && this.players.filter((p) => p.hasAttacked()).length > 0;
-        if (this.decided) {
+        if (this.decided && this.awaitingInput) {
             this.awaitingInput = false;
-            if (this.signal) { // A player attacked within opportunity window
+            if (this.signal) // A player attacked within opportunity window
                 this.playVictory();
-                this.resetGame();
-            } else {
+            else 
                 this.playTie()
-            }
+            this.resetGame();
         }
     }
 
@@ -77,7 +76,6 @@ class GameLayer extends Layer {
         //A player moved before the signal
         this.background = new Model(images.inverseBackground, canvasWidth*0.5, canvasHeight*0.5);
         playLaunchSound();
-        this.resetGame();
     }
 
     playVictory() {
