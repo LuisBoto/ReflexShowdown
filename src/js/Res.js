@@ -5,6 +5,7 @@ import inverseBackgroundFile from "../res/invertBackground.png";
 import player1File from "../res/player1.png";
 import player2File from "../res/player2.png";
 import keyFile from "../res/key.png";
+import pressedKeyFile from "../res/pressedKey.png";
 
 var cache = [];
 var images = {
@@ -15,6 +16,7 @@ var images = {
     player1: player1File,
     player2: player2File,
     key: keyFile,
+    pressedKey: pressedKeyFile,
 };
 
 var routeImages = Object.values(images);

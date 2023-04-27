@@ -14,8 +14,8 @@ class Player extends Model {
 
     initiate() {
         this.time = -1;
-        this.control.process();
-        this.key = new Key(this.x, this.y+this.height*0.75, this.control.getCharacterFromKeyCode());
+        this.control.consume();
+        this.key = new Key(this.x, this.y+this.height*0.75, this.control);
     }
 
     draw() {
@@ -24,14 +24,13 @@ class Player extends Model {
     }
 
     doTurn() {
-        if (this.control.pressed) {
-            this.control.process();
+        if (this.control.consume()) {
             this.time = Date.now();
         }
     }
 
     skipTurn() {
-        this.control.process();
+        this.control.consume();
     }
 
     hasAttacked() {

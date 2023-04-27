@@ -13,9 +13,9 @@ class Text {
         this.value = value;
     }
 
-    draw() {
+    draw(color) {
         context.font = "30px monospace";
-        context.fillStyle = "white";
+        context.fillStyle = color ? color : "white";
         context.textAlign = "left";
         if (this.center)
             context.textAlign = "center";

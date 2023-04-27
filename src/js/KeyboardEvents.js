@@ -9,8 +9,10 @@ class Control {
         this.pressed = true;
     }
 
-    process() {
+    consume() {
+        let aux = this.pressed;
         this.pressed = false;
+        return aux;
     }
 
     getCharacterFromKeyCode() {

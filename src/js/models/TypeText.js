@@ -1,4 +1,5 @@
 import { Text } from "./Text.js";
+import { context } from "../../Main";
 
 class TypeText extends Text {
 

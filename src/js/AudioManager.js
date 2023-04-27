@@ -11,16 +11,16 @@ launchSound.loop = false;
 
 function playAmbientMusic() {
     ambientMusic.volume = 0.25;
-    //ambientMusic.play();
+    ambientMusic.play();
 }
 
 function playMatchStart() {
     matchStart.volume = 0.5;
-    //matchStart.play();
+    matchStart.play();
 }
 
 function playLaunchSound() {
-    //launchSound.play();
+    launchSound.play();
 }
 
 function restartSound() {

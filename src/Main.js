@@ -17,10 +17,10 @@ function startGame() {
     loop();
 }
 
-function loop(){
+function loop() {
+    layer.draw();
     layer.processControls();
     layer.update();
-    layer.draw();
     requestAnimationFrame(loop);
 }
 
