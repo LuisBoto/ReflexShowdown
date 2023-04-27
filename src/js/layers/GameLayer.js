@@ -1,5 +1,5 @@
 import { Layer } from "./Layer.js";
-import { playAmbientMusic, playLaunchSound, playMatchStart, restartSound } from "../AudioManager.js";
+import { playAmbientMusic, playLaunchSound, playMatchStart, playSlashSound, restartAudio } from "../AudioManager.js";
 import { images } from "../Res.js";
 import { Model } from "../models/Model.js";
 import { Slash } from "../models/Slash.js";
@@ -14,7 +14,7 @@ class GameLayer extends Layer {
     }
 
     initiate() {
-        restartSound();
+        restartAudio();
         playAmbientMusic();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
@@ -80,6 +80,7 @@ class GameLayer extends Layer {
 
     playVictory() {
         this.slash.show = true;
+        playSlashSound();
         this.players.forEach(p => p.doDefeat());
         let max = this.players.map(p => p.getTime()).reduce((a, b) => Math.max(a, b), -Infinity);
         this.players.filter(p => p.getTime() == max)[0].doVictory();

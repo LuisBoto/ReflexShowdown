@@ -1,13 +1,16 @@
 import ambientWindFile from "../res/ambientWind.mp3";
 import matchStartFile from "../res/matchStart.mp3";
 import launchSoundFile from "../res/launchSound.mp3";
+import slashFile from "../res/slash.mp3";
 
-var ambientMusic = new Audio(ambientWindFile);
-var matchStart = new Audio(matchStartFile);
-var launchSound = new Audio(launchSoundFile);
+let ambientMusic = new Audio(ambientWindFile);
+let matchStart = new Audio(matchStartFile);
+let launchSound = new Audio(launchSoundFile);
+let slashSound = new Audio(slashFile);
 ambientMusic.loop = true;
 matchStart.loop = false;
 launchSound.loop = false;
+slashSound.loop = false;
 
 function playAmbientMusic() {
     ambientMusic.volume = 0.25;
@@ -23,7 +26,11 @@ function playLaunchSound() {
     launchSound.play();
 }
 
-function restartSound() {
+function playSlashSound() {
+    slashSound.play();
+}
+
+function restartAudio() {
     ambientMusic.pause();
     ambientMusic.currentTime = 0;
     launchSound.pause();
@@ -36,7 +43,8 @@ export {
     playAmbientMusic,
     playMatchStart,
     playLaunchSound,
-    restartSound
+    playSlashSound,
+    restartAudio
 }
 
 

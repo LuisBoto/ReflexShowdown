@@ -8,8 +8,8 @@ import keyFile from "../res/key.png";
 import pressedKeyFile from "../res/pressedKey.png";
 import slashFile from "../res/slash.png";
 
-var cache = [];
-var images = {
+let cache = [];
+let images = {
     menuBackground: menuBackgroundFile,
     exclamation: exclamationFile,
     background: backgroundFile,
@@ -21,8 +21,7 @@ var images = {
     slash: slashFile,
 };
 
-var routeImages = Object.values(images);
-
+let routeImages = Object.values(images);
 function loadImages(index, callback) {
     cache[routeImages[index]] = new Image();
     cache[routeImages[index]].src = routeImages[index];

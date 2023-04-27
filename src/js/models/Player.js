@@ -49,7 +49,7 @@ class Player extends Model {
     }
 
     doDefeat() {
-        this.x = canvasWidth*0.5;
+        this.x = this.isLeftSide ? canvasWidth*0.1 : canvasWidth*0.9;
         this.key.setX(this.x);
     }
 

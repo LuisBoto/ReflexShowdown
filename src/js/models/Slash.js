@@ -12,13 +12,19 @@ class Slash extends Model {
     initiate() {
         this.frames = 3;
         this.show = false;
+        this.rotation = Math.floor(Math.random()*360);
     }
 
     draw() {
         if (this.show && this.frames >= 0) {
             context.fillStyle = "black";
             context.fillRect(0, 0, canvasWidth, canvasHeight);
-            super.drawResize(this.width*10, this.height*6);
+
+            context.save();
+            //context.translate(this.x, this.y); // TODO random rotation of slash
+            //context.rotate(this.rotation * (Math.PI / 180));
+            super.drawResize(this.width*4, this.height*3);
+            context.restore();
             this.frames -= 1;
         }
         if (this.frames < 0)
