@@ -1,3 +1,6 @@
+import { Text } from "./Text.js";
+import { context } from "../../Main";
+
 class TypeText extends Text {
 
     constructor(value, x, y, centered) {
@@ -7,7 +10,7 @@ class TypeText extends Text {
 
     draw() {
         if (this.counter < this.value.length)
-            this.counter=this.counter+3;
+            this.counter=this.counter+1;
         context.font = "25px Monospace";
         context.fillStyle = "white";
         context.textAlign = "left";
@@ -16,4 +19,8 @@ class TypeText extends Text {
         context.fillText(this.value.substring(0, this.counter), this.x, this.y);
     }
 
+}
+
+export {
+    TypeText
 }

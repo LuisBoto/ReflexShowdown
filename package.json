@@ -1,0 +1,25 @@
+{
+  "name": "reflexshowdown",
+  "version": "1.0.0",
+  "description": "Two player duel reaction game",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisBoto/ReflexShowdown.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisBoto/ReflexShowdown/issues"
+  },
+  "homepage": "https://github.com/LuisBoto/ReflexShowdown#readme",
+  "devDependencies": {
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2"
+  }
+}

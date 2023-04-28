@@ -1,3 +1,6 @@
+import { MenuLayer } from "./js/layers/MenuLayer.js";
+import { loadImages } from "./js/Res.js";
+
 // Canvas & context
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
@@ -14,15 +17,12 @@ function startGame() {
     loop();
 }
 
-function loop(){
+function loop() {
+    layer.draw();
     layer.processControls();
     layer.update();
-    layer.draw();
     requestAnimationFrame(loop);
 }
-
-// Resize
-window.addEventListener('load', resize, false);
 
 function resize() {
     console.log("Resize")
@@ -30,4 +30,18 @@ function resize() {
     canvas.height = window.innerHeight;
     canvasWidth = window.innerWidth;
     canvasHeight = window.innerHeight;
+}
+
+function setLayer(newLayer) {
+    layer = newLayer;
+}
+
+window.addEventListener('load', resize, false);
+loadImages(0, startGame);
+
+export {
+    context,
+    canvasWidth,
+    canvasHeight,
+    setLayer
 }

@@ -1,3 +1,6 @@
+import { cache } from "../Res.js";
+import { context } from "../../Main.js";
+
 class Model {
 
     constructor(imageRoute, x, y) {
@@ -35,4 +38,8 @@ class Model {
         this.width = this.image.width;
         this.height = this.image.height;
     }
+}
+
+export {
+    Model
 }
