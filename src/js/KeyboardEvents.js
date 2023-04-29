@@ -4,11 +4,14 @@ class Control {
         this.keyCode = keyCode;
         this.pressed = false;
         this.lifted = true;
+        this.time = -1;
     }
 
     onKey() {
         this.pressed = true;
         this.lifted = false;
+        this.time = Date.now();
+        console.log("Time: "+(this.time)+" key " + this.getCharacterFromKeyCode());
     }
 
     consume() {

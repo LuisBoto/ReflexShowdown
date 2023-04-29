@@ -10,8 +10,7 @@ class Key extends Model {
         this.keyControl = keyControl;
         this.text = new Text(keyControl.getCharacterFromKeyCode(), x, y, true);
         
-        this.tagged = keyTag;
-        if (this.tagged) this.tag = new TypeText(keyTag, x, y+this.height, true);
+        this.setTag(keyTag);
         this.isPressed = 0;
         this.pressedY = this.y+4;
     }
@@ -57,6 +56,11 @@ class Key extends Model {
         this.x = x;
         this.text.x = x;
         if (this.tagged) this.tag.x = x;
+    }
+
+    setTag(tagText) {
+        this.tagged = tagText;
+        if (this.tagged) this.tag = new TypeText(tagText, this.x, this.y+this.height, true);
     }
 }
 

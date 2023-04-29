@@ -28,10 +28,17 @@ class GameLayer extends Layer {
         this.playStartAnimation();
     }
 
+    processControls() {
+        if (!this.awaitingInput) 
+            this.players.forEach(player => player.skipTurn());
+        else
+            this.players.forEach(player => player.doTurn());
+    }
+
     update() {
         if (Math.random()*1000 < 5 && this.awaitingInput && !this.signal) {
             this.signal = true;
-            this.launchTime = new Date();
+            this.launchTime = Date.now();
             this.players.forEach(p => p.launchTime = this.launchTime);
             playLaunchSound();
         }
@@ -46,13 +53,6 @@ class GameLayer extends Layer {
                 this.playTie()
             this.resetGame();
         }
-    }
-
-    processControls() {
-        if (!this.awaitingInput) 
-            this.players.forEach(player => player.skipTurn());
-        else
-            this.players.forEach(player => player.doTurn());
     }
 
     draw() {

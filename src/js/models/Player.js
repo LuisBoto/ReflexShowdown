@@ -14,7 +14,7 @@ class Player extends Model {
     initiate() {
         this.x = this.isLeftSide ? canvasWidth*0.2 : canvasWidth*0.8;
         this.y = canvasHeight*0.63;
-        this.time = -1;
+        this.attacked = false;
         this.launchTime = -1;
         this.control.consume();
         this.key = new Key(this.x, this.y+this.height*0.75, this.control);
@@ -26,9 +26,8 @@ class Player extends Model {
     }
 
     doTurn() {
-        if (this.control.consume()) {
-            this.time = Date.now();
-        }
+        if (this.control.consume()) 
+            this.attacked = true;
     }
 
     skipTurn() {
@@ -36,16 +35,17 @@ class Player extends Model {
     }
 
     hasAttacked() {
-        return this.time != -1;
+        return this.attacked;
     }
 
     getTime() {
-        return this.time - this.launchTime;
+        return this.control.time - this.launchTime;
     }
 
     doVictory() {
         this.x = this.isLeftSide ? canvasWidth*0.7 : canvasWidth*0.3;
         this.key.setX(this.x);
+        this.key.setTag(this.getTime()+"ms");
     }
 
     doDefeat() {
