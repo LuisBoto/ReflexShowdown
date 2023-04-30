@@ -7,6 +7,7 @@ import player2File from "../res/player2.png";
 import keyFile from "../res/key.png";
 import pressedKeyFile from "../res/pressedKey.png";
 import slashFile from "../res/slash.png";
+import slash2File from "../res/slash2.png"
 
 let cache = [];
 let images = {
@@ -19,6 +20,7 @@ let images = {
     key: keyFile,
     pressedKey: pressedKeyFile,
     slash: slashFile,
+    slash2: slash2File
 };
 
 let routeImages = Object.values(images);

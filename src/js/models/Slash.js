@@ -5,14 +5,14 @@ import { context } from "../../Main.js";
 class Slash extends Model {
 
     constructor(imageRoute) {
-        super(imageRoute, canvasWidth*0.5, canvasHeight*0.65);
+        super(imageRoute, 0, 0);
         this.initiate();
     }
 
     initiate() {
         this.frames = 3;
         this.show = false;
-        this.rotation = Math.floor(Math.random()*360);
+        this.rotation = Math.floor(Math.random()*360) - 45;
     }
 
     draw() {
@@ -21,9 +21,9 @@ class Slash extends Model {
             context.fillRect(0, 0, canvasWidth, canvasHeight);
 
             context.save();
-            //context.translate(this.x, this.y); // TODO random rotation of slash
-            //context.rotate(this.rotation * (Math.PI / 180));
-            super.drawResize(this.width*4, this.height*3);
+            context.translate(canvasWidth*0.5, canvasHeight*0.65);
+            context.rotate(this.rotation * (Math.PI / 180));
+            super.drawResize(this.width*6, this.height*6);
             context.restore();
             this.frames -= 1;
         }

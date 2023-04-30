@@ -21,7 +21,7 @@ class GameLayer extends Layer {
         playAmbientMusic();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
-        this.slash = new Slash(images.slash);
+        this.slash = new Slash(images.slash2);
         this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, escapeKeyControl, "Back to menu", "esc");
 
         this.awaitingInput = false;
