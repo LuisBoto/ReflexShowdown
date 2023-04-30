@@ -11,7 +11,6 @@ class Control {
         this.pressed = true;
         this.lifted = false;
         this.time = Date.now();
-        console.log("Time: "+(this.time)+" key " + this.getCharacterFromKeyCode());
     }
 
     consume() {

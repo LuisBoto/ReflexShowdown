@@ -6,6 +6,7 @@ import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { Player } from "../models/Player.js";
 import { Key } from "../models/Key.js";
 import { multiPlayerControl, singlePlayerControl, player1Control, player2Control, escapeKeyControl } from "../KeyboardEvents.js"
+import { restartAudio } from "../AudioManager.js";
 
 class MenuLayer extends Layer {
     constructor() {
@@ -14,6 +15,7 @@ class MenuLayer extends Layer {
     }
     
     initiate() {
+        restartAudio();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.singlePlayerKey = new Key(canvasWidth*0.3, canvasHeight*0.4, singlePlayerControl, "Singleplayer");
         this.multiPlayerKey = new Key(canvasWidth*0.700, canvasHeight*0.4, multiPlayerControl, "Multiplayer");

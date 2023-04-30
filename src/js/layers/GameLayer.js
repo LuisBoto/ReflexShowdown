@@ -3,7 +3,9 @@ import { playAmbientMusic, playLaunchSound, playMatchStart, playSlashSound, rest
 import { images } from "../Res.js";
 import { Model } from "../models/Model.js";
 import { Slash } from "../models/Slash.js";
-import { canvasHeight, canvasWidth } from "../../Main.js";
+import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
+import { escapeKeyControl } from "../KeyboardEvents.js";
+import { MenuLayer } from "./MenuLayer.js";
 
 class GameLayer extends Layer {
 
@@ -29,6 +31,8 @@ class GameLayer extends Layer {
     }
 
     processControls() {
+        if (escapeKeyControl.consume())
+            return setLayer(new MenuLayer());
         if (!this.awaitingInput) 
             this.players.forEach(player => player.skipTurn());
         else

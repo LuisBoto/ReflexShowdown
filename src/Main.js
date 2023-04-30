@@ -25,7 +25,6 @@ function loop() {
 }
 
 function resize() {
-    console.log("Resize")
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     canvasWidth = window.innerWidth;
