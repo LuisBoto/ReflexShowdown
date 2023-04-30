@@ -5,10 +5,10 @@ import { TypeText} from "./TypeText.js";
 
 class Key extends Model {
 
-    constructor(x, y, keyControl, keyTag) {
+    constructor(x, y, keyControl, keyTag, keyText) {
         super(images.key, x, y);
         this.keyControl = keyControl;
-        this.text = new Text(keyControl.getCharacterFromKeyCode(), x, y, true);
+        this.text = new Text(keyText ? keyText : keyControl.getCharacterFromKeyCode(), x, y, true);
         
         this.setTag(keyTag);
         this.isPressed = 0;

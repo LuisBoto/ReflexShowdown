@@ -6,6 +6,7 @@ import { Slash } from "../models/Slash.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { escapeKeyControl } from "../KeyboardEvents.js";
 import { MenuLayer } from "./MenuLayer.js";
+import { Key } from "../models/Key.js";
 
 class GameLayer extends Layer {
 
@@ -21,6 +22,7 @@ class GameLayer extends Layer {
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
         this.slash = new Slash(images.slash);
+        this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, escapeKeyControl, "Back to menu", "esc");
 
         this.awaitingInput = false;
         this.signal = false;
@@ -61,6 +63,7 @@ class GameLayer extends Layer {
 
     draw() {
         this.background.drawResize(canvasWidth, canvasHeight);
+        this.backToMenuKey.draw();
         this.players.forEach(player => player.draw());
 
         if (this.signal && !this.decided) 
