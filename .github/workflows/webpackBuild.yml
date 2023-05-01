@@ -19,7 +19,8 @@ jobs:
         
     - name: Sync branch
       run: |
-        git checkout webpackBuild
+        git checkout -b webpackBuild
+        git branch webpackBuild --set-ustream-to origin/webpackBuild
         git merge master --no-edit
         git checkout master        
 
