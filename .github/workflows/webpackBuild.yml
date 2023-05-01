@@ -22,7 +22,7 @@ jobs:
     - name: Sync master to build branch
       run: |
         git pull --all
-        git branch --delete webpackBuild
+        git branch --delete origin/webpackBuild
         git checkout -b webpackBuild
 
     - name: Build webpack
