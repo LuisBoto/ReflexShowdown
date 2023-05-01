@@ -22,7 +22,7 @@ jobs:
     - name: Sync master to build branch
       run: |
         git pull --all
-        git merge master --no-edit
+        git merge origin/master --no-edit
 
     - name: Build webpack
       run: |
