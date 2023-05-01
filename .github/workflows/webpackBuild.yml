@@ -22,8 +22,7 @@ jobs:
         git pull --all
         git checkout -b webpackBuild
         git branch webpackBuild --set-upstream-to webpackBuild
-        git merge master --no-edit
-        git checkout master        
+        git merge master --no-edit    
 
     - name: Build
       run: |
@@ -35,7 +34,7 @@ jobs:
       with:
         add: 'dist -f'
         message: 'Webpack build'
-        new_branch: 'webpackBuild'
+        # new_branch: 'webpackBuild'
         tag_push: '--force'
 
     
