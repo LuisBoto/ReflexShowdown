@@ -17,6 +17,9 @@ jobs:
       with:
         node-version: 18.x
         
+    - name: Create build branch
+      run: git checkout -b webpackBuild
+        
     - name: Sync webpack build with master
       uses: devmasx/merge-branch@master
       with:
