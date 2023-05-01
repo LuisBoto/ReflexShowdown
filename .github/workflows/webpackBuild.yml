@@ -21,8 +21,10 @@ jobs:
 
     - name: Sync master to build branch
       run: |
-        git pull --all
-        git merge origin/master --no-edit
+        git checkout master
+        git pull
+        git checkout webpackBuild
+        git merge master --no-edit
 
     - name: Build webpack
       run: |
