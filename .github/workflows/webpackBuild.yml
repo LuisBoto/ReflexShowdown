@@ -1,4 +1,4 @@
-name: Webpack
+name: Webpack build
 
 on:
   push:
@@ -16,6 +16,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18.x
+        
+    - name: Sync branch
+      run: |
+        git checkout webpackBuild
+        git merge master --no-edit
+        git checkout master        
 
     - name: Build
       run: |
