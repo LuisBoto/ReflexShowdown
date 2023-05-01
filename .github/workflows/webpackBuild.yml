@@ -22,7 +22,7 @@ jobs:
     - name: Sync master to build branch
       run: |
         git pull --all --allow-unrelated-histories
-        git merge origin/master --no-edit 
+        git merge origin/master --allow-unrelated-histories --no-edit 
 
     - name: Build webpack
       run: |
