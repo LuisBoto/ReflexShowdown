@@ -11,22 +11,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: webpackBuild
 
     - name: Use Node.js 
       uses: actions/setup-node@v3
       with:
         node-version: 18.x
-        
-    - name: Create build branch
-      run: git checkout -b webpackBuild
-        
-    - name: Sync webpack build with master
-      uses: devmasx/merge-branch@master
-      with:
-        type: now
-        from_branch: master
-        target_branch: webpackBuild
-        github_token: ${{ secrets.GH_TOKEN }}
+
+    - name: Sync master to build branch
+      run: |
+        git pull origin master
+        git merge master
 
     - name: Build webpack
       run: |
@@ -38,7 +34,6 @@ jobs:
       with:
         add: 'dist -f'
         message: 'Webpack build'
-        new_branch: 'webpackBuild'
         push: '--set-upstream origin webpackBuild'
 
     
