@@ -23,7 +23,7 @@ jobs:
         type: now
         from_branch: master
         target_branch: webpackBuild
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GH_TOKEN }}
 
     - name: Build webpack
       run: |
