@@ -35,6 +35,6 @@ jobs:
         add: 'dist -f'
         message: 'Webpack build'
         # new_branch: 'webpackBuild'
-        tag_push: '--force'
+        push: '--set-upstream origin webpackBuild'
 
     
