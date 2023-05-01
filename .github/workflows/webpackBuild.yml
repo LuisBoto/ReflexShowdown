@@ -20,7 +20,9 @@ jobs:
         node-version: 18.x
 
     - name: Sync master to build branch
-      run: git merge origin/master --no-edit --allow-unrelated-histories
+      run: |
+        git pull --all
+        git merge origin/master --no-edit --allow-unrelated-histories
 
     - name: Build webpack
       run: |
