@@ -12,7 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        ref: master
+        ref: webpackBuild
+        fetch-depth: 0
 
     - name: Use Node.js 
       uses: actions/setup-node@v3
@@ -22,8 +23,7 @@ jobs:
     - name: Sync master to build branch
       run: |
         git pull --all
-        git branch --delete origin/webpackBuild
-        git checkout -b webpackBuild
+        git merge origin/master
 
     - name: Build webpack
       run: |
