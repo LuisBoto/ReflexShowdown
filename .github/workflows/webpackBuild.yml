@@ -17,14 +17,15 @@ jobs:
       with:
         node-version: 18.x
         
-    - name: Sync branch
-      run: |
-        git pull --all
-        git checkout -b webpackBuild
-        git branch webpackBuild --set-upstream-to webpackBuild
-        git merge master --no-edit    
+    - name: Sync webpack build with master
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        from_branch: master
+        target_branch: webpackBuild
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build
+    - name: Build webpack
       run: |
         npm install
         npx webpack
@@ -34,7 +35,7 @@ jobs:
       with:
         add: 'dist -f'
         message: 'Webpack build'
-        # new_branch: 'webpackBuild'
+        new_branch: 'webpackBuild'
         push: '--set-upstream origin webpackBuild'
 
     
