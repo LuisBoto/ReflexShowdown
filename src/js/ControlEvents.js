@@ -50,6 +50,33 @@ function onKeyUp(event) {
         .forEach((control) => control.onKeyUp())
 }
 
+let canvas = document.getElementById("canvas");
+const ongoingTouches = [];
+canvas.addEventListener("pointerdown", handleStart, false);
+canvas.addEventListener("pointerup", handleEnd, false);
+canvas.addEventListener("pointermove", handleMove, false);
+canvas.addEventListener("pointercancel", handleEnd, false);
+
+function handleStart(event) {
+    ongoingTouches.push(event);
+}
+
+function handleMove(event) {
+    ongoingTouches.splice(
+        ongoingTouches.findIndex(
+            (tch) => tch.pointerId == event.pointerId), 
+        1, 
+        event); 
+}
+  
+function handleEnd(event) {
+    ongoingTouches.splice(
+        ongoingTouches.findIndex(
+            (tch) => tch.pointerId == event.pointerId), 
+        1); 
+}
+  
+
 export {
     Control,
     player1Control,

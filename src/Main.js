@@ -39,6 +39,7 @@ window.addEventListener('load', resize, false);
 loadImages(0, startGame);
 
 export {
+    canvas,
     context,
     canvasWidth,
     canvasHeight,

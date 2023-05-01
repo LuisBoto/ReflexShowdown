@@ -4,7 +4,7 @@ import { images } from "../Res.js";
 import { Model } from "../models/Model.js";
 import { Slash } from "../models/Slash.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
-import { escapeKeyControl } from "../KeyboardEvents.js";
+import { escapeKeyControl } from "../ControlEvents.js";
 import { MenuLayer } from "./MenuLayer.js";
 import { Key } from "../models/Key.js";
 

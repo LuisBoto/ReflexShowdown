@@ -5,7 +5,7 @@ import { images } from "../Res.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { Player } from "../models/Player.js";
 import { Key } from "../models/Key.js";
-import { multiPlayerControl, singlePlayerControl, player1Control, player2Control, escapeKeyControl } from "../KeyboardEvents.js"
+import { multiPlayerControl, singlePlayerControl, player1Control, player2Control, escapeKeyControl } from "../ControlEvents.js"
 import { restartAudio } from "../AudioManager.js";
 
 class MenuLayer extends Layer {
