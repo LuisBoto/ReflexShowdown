@@ -7,14 +7,19 @@ class Text {
         this.x = x;
         this.y = y;
         this.center = centered;
+        this.size = "20px";
     }
 
     setValue(value) {
         this.value = value;
     }
 
+    setSize(size) {
+        this.size = size + "px";
+    }
+
     draw(color) {
-        context.font = "20px monospace";
+        context.font = this.size + " monospace";
         context.fillStyle = color ? color : "white";
         context.textAlign = "left";
         if (this.center)

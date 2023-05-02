@@ -7,6 +7,7 @@ import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { escapeKeyControl } from "../ControlEvents.js";
 import { MenuLayer } from "./MenuLayer.js";
 import { Key } from "../models/Key.js";
+import { StrokedText } from "../models/StrokedText.js";
 
 class GameLayer extends Layer {
 
@@ -22,6 +23,7 @@ class GameLayer extends Layer {
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
         this.slash = new Slash(images.slash2);
+        this.winnerTime = new StrokedText("", canvasWidth*0.5, canvasHeight*0.2);
         this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, escapeKeyControl, "Back to menu", "esc");
 
         this.awaitingInput = false;
@@ -43,9 +45,9 @@ class GameLayer extends Layer {
 
     update() {
         if (Math.random()*1000 < 5 && this.awaitingInput && !this.signal) {
-            this.signal = true;
             this.launchTime = Date.now();
             this.players.forEach(p => p.launchTime = this.launchTime);
+            this.signal = true;
             playLaunchSound();
         }
 
@@ -71,6 +73,7 @@ class GameLayer extends Layer {
         if (this.signal && !this.decided) 
             this.exclamation.draw();
         this.slash.draw();
+        this.winnerTime.draw("yellow", "black");
     }
 
     playStartAnimation() {
@@ -88,11 +91,13 @@ class GameLayer extends Layer {
     }
 
     playVictory() {
+        this.players.forEach(p => p.doDefeat());
+        let bestTime = Math.min.apply(null, this.players.filter(p => p.getTime() > 0).map(p => p.getTime()));
+        this.players.filter(p => p.getTime() == bestTime)[0].doVictory();
+
+        this.winnerTime.setValue("Winner time: " + bestTime + "ms");
         this.slash.show = true;
         playSlashSound();
-        this.players.forEach(p => p.doDefeat());
-        let max = this.players.map(p => p.getTime()).reduce((a, b) => Math.max(a, b), -Infinity);
-        this.players.filter(p => p.getTime() == max)[0].doVictory();
     }
 
     resetGame() {

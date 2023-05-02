@@ -9,10 +9,10 @@ class Control {
     }
 
     onKey() {
-        this.pressed = true;
-        this.lifted = false;
         if (this.enableTimeMeasurement) 
             this.time = Date.now();
+        this.pressed = true;
+        this.lifted = false;
     }
 
     consume() {

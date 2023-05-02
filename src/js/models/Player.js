@@ -20,7 +20,7 @@ class Player extends Model {
         this.control.enableTimeMeasurement = true;
         this.launchTime = -1;
         this.attacked = false;
-        this.key = new Key(this.x, this.y+this.height*0.75, this.control);
+        this.key = new Key(this.x, this.y+this.height*0.6, this.control);
     }
 
     update() {
