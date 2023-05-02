@@ -4,14 +4,16 @@ import { Key } from "./Key.js";
 
 class Player extends Model {
 
-    constructor(imageRoute, isLeftSide, control) {
-        super(imageRoute);
+    constructor(imageAssets, isLeftSide, control) {
+        super(imageAssets.base);
+        this.assets = imageAssets;
         this.isLeftSide = isLeftSide;
         this.control = control;
         this.initiate();
     }
 
     initiate() {
+        this.setImage(this.assets.base);
         this.x = this.isLeftSide ? canvasWidth*0.2 : canvasWidth*0.8;
         this.y = canvasHeight*0.63;
         this.attacked = false;
@@ -43,12 +45,14 @@ class Player extends Model {
     }
 
     doVictory() {
+        this.setImage(this.assets.win);
         this.x = this.isLeftSide ? canvasWidth*0.7 : canvasWidth*0.3;
         this.key.setX(this.x);
         this.key.setTag(this.getTime()+"ms");
     }
 
     doDefeat() {
+        this.setImage(this.assets.lose);
         this.x = this.isLeftSide ? canvasWidth*0.1 : canvasWidth*0.9;
         this.key.setX(this.x);
     }
