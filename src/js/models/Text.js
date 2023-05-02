@@ -14,7 +14,7 @@ class Text {
     }
 
     draw(color) {
-        context.font = "25px monospace";
+        context.font = "20px monospace";
         context.fillStyle = color ? color : "white";
         context.textAlign = "left";
         if (this.center)
