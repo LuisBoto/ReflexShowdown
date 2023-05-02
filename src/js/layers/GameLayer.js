@@ -29,7 +29,7 @@ class GameLayer extends Layer {
         this.awaitingInput = false;
         this.signal = false;
         this.decided = false;
-        this.players.forEach((p) => p.initiate())
+        this.players.forEach(p => p.initiate())
 
         this.playStartAnimation();
     }
@@ -91,9 +91,9 @@ class GameLayer extends Layer {
     }
 
     playVictory() {
-        this.players.forEach(p => p.doDefeat());
         let bestTime = Math.min.apply(null, this.players.filter(p => p.getTime() > 0).map(p => p.getTime()));
-        this.players.filter(p => p.getTime() == bestTime)[0].doVictory();
+        this.players.filter(p => p.getTime() != bestTime).forEach(p => p.doDefeat());
+        this.players.filter(p => p.getTime() == bestTime).forEach(p => p.doVictory());
 
         this.winnerTime.setValue("Winner time: " + bestTime + "ms");
         this.slash.show = true;

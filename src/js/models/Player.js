@@ -54,7 +54,7 @@ class Player extends Model {
 
     doVictory() {
         this.setImage(this.assets.win);
-        this.x = this.isLeftSide ? canvasWidth*0.8 : canvasWidth*0.2;
+        this.#calculateFinalVictoryPosition();
         this.key.setX(this.x);
     }
 
@@ -62,6 +62,17 @@ class Player extends Model {
         this.setImage(this.assets.lose);
         this.x = canvasWidth*0.5;
         this.key.setX(this.x);
+    }
+
+    #calculateFinalVictoryPosition() {
+        let x1 = this.x;
+        let y1 = this.y;
+        let x2 = canvasWidth; // canvasWidth/2;
+        let y2 = this.y; // canvasHeight/2;
+        let dashLine = (x) => ((x-x1)/(x2-x1)) * (y2-y1) + y1
+
+        this.x = canvasWidth - this.x;
+        this.y = dashLine(this.x);
     }
 
 }
