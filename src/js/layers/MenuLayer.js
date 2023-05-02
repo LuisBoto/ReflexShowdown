@@ -4,6 +4,7 @@ import { Model } from "../models/Model.js";
 import { images, player1Assets, player2Assets } from "../Res.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { Player } from "../models/Player.js";
+import { PlayerCpu } from "../models/PlayerCpu.js";
 import { Key } from "../models/Key.js";
 import { multiPlayerControl, singlePlayerControl, player1Control, player2Control, escapeKeyControl } from "../ControlEvents.js"
 import { restartAudio } from "../AudioManager.js";
@@ -24,7 +25,7 @@ class MenuLayer extends Layer {
 
     processControls() {
         if (singlePlayerControl.consume()) {
-            setLayer(new GameLayer([new Player(player1Assets, true, player1Control), new Player(player2Assets, false, player2Control)]));
+            setLayer(new GameLayer([new Player(player1Assets, true, player1Control), new PlayerCpu(player2Assets, false)]));
         }
         else if (multiPlayerControl.consume()) {
             setLayer(new GameLayer([new Player(player1Assets, true, player1Control), new Player(player2Assets, false, player2Control)]));
