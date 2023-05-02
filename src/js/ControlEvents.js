@@ -5,12 +5,14 @@ class Control {
         this.pressed = false;
         this.lifted = true;
         this.time = -1;
+        this.enableTimeMeasurement = true;
     }
 
     onKey() {
         this.pressed = true;
         this.lifted = false;
-        this.time = Date.now();
+        if (this.enableTimeMeasurement) 
+            this.time = Date.now();
     }
 
     consume() {

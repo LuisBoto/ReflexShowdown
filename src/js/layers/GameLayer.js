@@ -49,6 +49,8 @@ class GameLayer extends Layer {
             playLaunchSound();
         }
 
+        this.players.forEach(p => p.update());
+
         if (!this.decided)
             this.decided = this.awaitingInput && this.players.filter((p) => p.hasAttacked()).length > 0;
         if (this.decided && this.awaitingInput) {

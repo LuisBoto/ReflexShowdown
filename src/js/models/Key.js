@@ -1,7 +1,6 @@
 import { images } from "../Res.js";
 import { Model } from "./Model.js";
 import { Text } from "./Text.js";
-import { TypeText} from "./TypeText.js";
 
 class Key extends Model {
 
@@ -60,7 +59,7 @@ class Key extends Model {
 
     setTag(tagText) {
         this.tagged = tagText;
-        if (this.tagged) this.tag = new TypeText(tagText, this.x, this.y+this.height, true);
+        if (this.tagged) this.tag = new Text(tagText, this.x, this.y+this.height, true);
     }
 }
 

@@ -21,6 +21,10 @@ class Model {
         return false;
     }
 
+    update() {
+        
+    }
+
     draw() {
         context.drawImage(this.image,
             this.x - this.width /2,

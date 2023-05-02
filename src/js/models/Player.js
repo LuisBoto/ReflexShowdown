@@ -16,10 +16,18 @@ class Player extends Model {
         this.setImage(this.assets.base);
         this.x = this.isLeftSide ? canvasWidth*0.2 : canvasWidth*0.8;
         this.y = canvasHeight*0.63;
-        this.attacked = false;
-        this.launchTime = -1;
         this.control.consume();
+        this.control.enableTimeMeasurement = true;
+        this.launchTime = -1;
+        this.attacked = false;
         this.key = new Key(this.x, this.y+this.height*0.75, this.control);
+    }
+
+    update() {
+        if (this.getTime() > 0 && this.launchTime != -1) { 
+            this.key.setTag(this.getTime() > 0 ? this.getTime()+"ms" : "-");
+            this.control.enableTimeMeasurement = false;
+        }
     }
 
     draw() {
@@ -48,16 +56,14 @@ class Player extends Model {
         this.setImage(this.assets.win);
         this.x = this.isLeftSide ? canvasWidth*0.8 : canvasWidth*0.2;
         this.key.setX(this.x);
-        this.key.setTag(this.getTime()+"ms");
     }
 
     doDefeat() {
         this.setImage(this.assets.lose);
-        this.x = canvasWidth*0.5; //this.isLeftSide ? canvasWidth*0.1 : canvasWidth*0.9;
+        this.x = canvasWidth*0.5;
         this.key.setX(this.x);
     }
 
-    
 }
 
 export {
