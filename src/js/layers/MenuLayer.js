@@ -27,7 +27,7 @@ class MenuLayer extends Layer {
             setLayer(new GameLayer([new Player(player1Assets, true, player1Control), new Player(player2Assets, false, player2Control)]));
         }
         else if (multiPlayerControl.consume()) {
-            setLayer(new GameLayer([new Player(images.player1, true, player1Control), new Player(images.player2, false, player2Control)]));
+            setLayer(new GameLayer([new Player(player1Assets, true, player1Control), new Player(player2Assets, false, player2Control)]));
         }
         escapeKeyControl.consume();
     }

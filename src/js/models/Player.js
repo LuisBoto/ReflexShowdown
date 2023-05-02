@@ -23,7 +23,7 @@ class Player extends Model {
     }
 
     draw() {
-        super.draw();
+        super.drawResize(this.width*0.8, this.height*0.8);
         this.key.draw();
     }
 
@@ -46,14 +46,14 @@ class Player extends Model {
 
     doVictory() {
         this.setImage(this.assets.win);
-        this.x = this.isLeftSide ? canvasWidth*0.7 : canvasWidth*0.3;
+        this.x = this.isLeftSide ? canvasWidth*0.8 : canvasWidth*0.2;
         this.key.setX(this.x);
         this.key.setTag(this.getTime()+"ms");
     }
 
     doDefeat() {
         this.setImage(this.assets.lose);
-        this.x = this.isLeftSide ? canvasWidth*0.1 : canvasWidth*0.9;
+        this.x = canvasWidth*0.5; //this.isLeftSide ? canvasWidth*0.1 : canvasWidth*0.9;
         this.key.setX(this.x);
     }
 
