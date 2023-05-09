@@ -20,7 +20,7 @@ class MenuLayer extends Layer {
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.singlePlayerKey = new Key(canvasWidth*0.3, canvasHeight*0.4, singlePlayerControl, "Singleplayer");
         this.multiPlayerKey = new Key(canvasWidth*0.700, canvasHeight*0.4, multiPlayerControl, "Multiplayer");
-        this.howToKey = new Key(canvasWidth*0.500, canvasHeight*0.75, escapeKeyControl, "How to play?");
+        this.howToKey = new Key(canvasWidth*0.500, canvasHeight*0.75, escapeKeyControl, "How to play?", "esc");
     }
 
     processControls() {

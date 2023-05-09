@@ -31,8 +31,8 @@ class PlayerCpu extends Player {
         this.timeText.draw();
     }
 
-    doTurn() {
-        this.skipTurn();
+    processControls() {
+        this.skipControls();
     }
 
     getTime() {

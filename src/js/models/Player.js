@@ -35,12 +35,12 @@ class Player extends Model {
         this.key.draw();
     }
 
-    doTurn() {
+    processControls() {
         if (this.control.consume()) 
             this.attacked = true;
     }
 
-    skipTurn() {
+    skipControls() {
         this.control.consume();
     }
 

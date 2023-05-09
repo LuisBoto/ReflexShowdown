@@ -38,9 +38,9 @@ class GameLayer extends Layer {
         if (escapeKeyControl.consume())
             return setLayer(new MenuLayer());
         if (!this.awaitingInput) 
-            this.players.forEach(player => player.skipTurn());
+            this.players.forEach(player => player.skipControls());
         else
-            this.players.forEach(player => player.doTurn());
+            this.players.forEach(player => player.processControls());
     }
 
     update() {
