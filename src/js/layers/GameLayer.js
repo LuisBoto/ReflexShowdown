@@ -78,10 +78,10 @@ class GameLayer extends Layer {
 
     playStartAnimation() {
         playMatchStart();
-        window.setTimeout(function(){
+        setTimeout(() => {
                 this.awaitingInput = true;
                 console.log("Awaiting input");
-            }.bind(this), 2000);
+            }, 2000);
     }
 
     playTie() {

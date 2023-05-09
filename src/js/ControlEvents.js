@@ -42,15 +42,22 @@ class PlayerTouchControl extends Control {
 
 }
 
-let player1Control = new PlayerTouchControl(65);
-let player2Control = new Control(76);
+const playerControlKeyCodes = [80, 76, 77, 90, 65, 81];
 let singlePlayerControl = new Control(81);
 let multiPlayerControl = new Control(80);
 let escapeKeyControl = new Control(27);
-const controls = [player1Control, player2Control, singlePlayerControl, multiPlayerControl, escapeKeyControl];
+const controls = [];
 const playerTouchControls = [];
 const buttonTouchControls = [];
 
+function updateControls() {
+    controls.length = 0;
+    controls.push(...playerTouchControls, ...buttonTouchControls, singlePlayerControl, multiPlayerControl, escapeKeyControl);
+}
+updateControls();
+
+
+// ###### KEYBOARD EVENTS
 window.addEventListener('keydown', onKeyDown, false);
 window.addEventListener('keyup', onKeyUp, false);
 
@@ -66,12 +73,13 @@ function onKeyUp(event) {
         .forEach((control) => control.onKeyUp());
 }
 
+// ###### TOUCHSCREEN / MOUSE EVENTS
 const ongoingTouches = [];
 let canvas = document.getElementById("canvas");
 canvas.addEventListener("pointerdown", handleStart, false);
 canvas.addEventListener("pointerup", handleEnd, false);
-canvas.addEventListener("pointermove", handleMove, false);
 canvas.addEventListener("pointercancel", handleEnd, false);
+//canvas.addEventListener("pointermove", handleMove, false);
 
 function handleStart(event) {
     ongoingTouches.push(event);
@@ -86,36 +94,55 @@ function handleMove(event) {
 }
   
 function handleEnd(event) {
-    ongoingTouches.splice(
-        ongoingTouches.findIndex(
-            (tch) => tch.pointerId == event.pointerId), 
-        1); 
+    let touchIndex = ongoingTouches.findIndex((tch) => tch.pointerId == event.pointerId)
+    playerTouchControls.forEach(ptc => {
+        if (isAffectedByTouches(ptc, [ongoingTouches[touchIndex]])) 
+            ptc.onKeyUp()
+        });
+    ongoingTouches.splice(touchIndex, 1); 
 }
 
 function triggerPlayerTouchControls() {
     playerTouchControls.forEach(ptc => {
-        let touched = ongoingTouches
-            .map(t => { t.clientX -= canvasWidth/2; t.clientY -= canvasHeight/2; return t; }) 
-            .map(t => Math.atan2(t.clientY, t.clientX))
-            .map(touchDegrees => { let degrees = 90 - touchDegrees; return degrees < 0 ? degrees+360 : degrees; })
-            .filter(touchDegrees => {
-                let isOverLowerLimit = touchDegrees > ptc.playerDegrees - ptc.degreesPerPlayer/2;
-                let isUnderUpperLimit = touchDegrees < ptc.playerDegrees + ptc.degreesPerPlayer/2;
-                if (ptc.playerDegrees != 0)
-                    isOverLowerLimit && isUnderUpperLimit;
-                else
-                    isOverLowerLimit || isUnderUpperLimit;
-            }).length > 0;
-        if (touched) 
+        if (isAffectedByTouches(ptc, ongoingTouches)) 
             ptc.onKey();
     });
+}
+
+function isAffectedByTouches(playerTouchControl, touches) {
+    return touches
+        .map(t => { let coordinate = { X: t.clientX - canvasWidth/2, Y: t.clientY - canvasHeight/2 }; return coordinate; }) 
+        .map(t => Math.atan2(t.Y, t.X)*180/Math.PI)
+        .map(touchDegrees => { let degrees = 90 - touchDegrees; return degrees < 0 ? degrees+360 : degrees; })
+        .filter(touchDegrees => {
+            let lowerLimit = playerTouchControl.playerDegrees - playerTouchControl.degreesPerPlayer/2;
+            if (lowerLimit < 0) lowerLimit += 360;
+            let upperLimit = playerTouchControl.playerDegrees + playerTouchControl.degreesPerPlayer/2;
+            if (upperLimit > 360) upperLimit -= 360;
+
+            let isOverLowerLimit = touchDegrees > lowerLimit;
+            let isUnderUpperLimit = touchDegrees < upperLimit;
+            
+            if (playerTouchControl.playerDegrees != 0)
+                return isOverLowerLimit && isUnderUpperLimit;
+            else
+                return isOverLowerLimit || isUnderUpperLimit;
+        }).length > 0;
+    }
+
+function getPlayerControls(playerNumber) {
+    playerTouchControls.length = 0;
+    let degreesPerPlayer = 360 / playerNumber;
+    for (let i = 0; i < playerNumber; i++) 
+        playerTouchControls.push(new PlayerTouchControl(playerControlKeyCodes[i], degreesPerPlayer, 360-(i*degreesPerPlayer+degreesPerPlayer/2)));
+    updateControls();
+    return playerTouchControls;
 }
   
 
 export {
     Control,
-    player1Control,
-    player2Control,
+    getPlayerControls,
     singlePlayerControl,
     multiPlayerControl,
     escapeKeyControl

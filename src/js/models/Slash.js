@@ -23,7 +23,7 @@ class Slash extends Model {
             context.save();
             context.translate(canvasWidth*0.5, canvasHeight*0.65);
             context.rotate(rotation * (Math.PI / 180));
-            super.drawResize(this.width*6, this.height*6);
+            this.drawResize(this.width*6, this.height*6);
             context.restore();
             this.frames -= 1;
         }

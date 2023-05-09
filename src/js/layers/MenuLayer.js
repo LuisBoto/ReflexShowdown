@@ -6,7 +6,7 @@ import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { Player } from "../models/Player.js";
 import { PlayerCpu } from "../models/PlayerCpu.js";
 import { Key } from "../models/Key.js";
-import { multiPlayerControl, singlePlayerControl, player1Control, player2Control, escapeKeyControl } from "../ControlEvents.js"
+import { multiPlayerControl, singlePlayerControl, getPlayerControls, escapeKeyControl } from "../ControlEvents.js"
 import { restartAudio } from "../AudioManager.js";
 
 class MenuLayer extends Layer {
@@ -24,11 +24,14 @@ class MenuLayer extends Layer {
     }
 
     processControls() {
+        this.playerNumber = 2;
         if (singlePlayerControl.consume()) {
-            setLayer(new GameLayer([new Player(player1Assets, true, player1Control), new PlayerCpu(player2Assets, false)]));
+            let playerControls = getPlayerControls(1);
+            setLayer(new GameLayer([new Player(player1Assets, true, playerControls[0]), new PlayerCpu(player2Assets, false)]));
         }
         else if (multiPlayerControl.consume()) {
-            setLayer(new GameLayer([new Player(player1Assets, true, player1Control), new Player(player2Assets, false, player2Control)]));
+            let playerControls = getPlayerControls(2);
+            setLayer(new GameLayer([new Player(player1Assets, true, playerControls[0]), new Player(player2Assets, false, playerControls[1])]));
         }
         escapeKeyControl.consume();
     }
