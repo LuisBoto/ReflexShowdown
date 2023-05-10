@@ -98,10 +98,6 @@ const KEYS = {
 const playerControlKeyCodes = [KEYS.P, KEYS.L, KEYS.M, KEYS.Z, KEYS.A, KEYS.Q];
 const controls = [];
 
-function cleanControls() {
-    controls.length = 0;
-}
-
 // ###### KEYBOARD EVENTS
 window.addEventListener('keydown', onKeyDown, false);
 window.addEventListener('keyup', onKeyUp, false);
@@ -128,14 +124,8 @@ canvas.addEventListener("pointercancel", handleEnd, false);
 
 function handleStart(event) {
     ongoingTouches.push(event);
-    triggerTouchControls();
-}
-
-function handleMove(event) {
-    ongoingTouches.splice(
-        ongoingTouches.findIndex((tch) => tch.pointerId == event.pointerId), 
-        1, event); 
-    triggerTouchControls();
+    controls.filter(tc => tc.isTriggeredByTouches(ongoingTouches))
+        .forEach(tc => tc.onKey());
 }
   
 function handleEnd(event) {
@@ -143,11 +133,6 @@ function handleEnd(event) {
     controls.filter(ptc => ptc.isTriggeredByTouches([ongoingTouches[touchIndex]]))
            .forEach(ptc => ptc.onKeyUp());
     ongoingTouches.splice(touchIndex, 1); 
-}
-
-function triggerTouchControls() {
-    controls.filter(tc => tc.isTriggeredByTouches(ongoingTouches))
-        .forEach(tc => tc.onKey());
 }
 
 function getPlayerControls(playerNumber) {
@@ -164,7 +149,10 @@ function getButtonControlOn(x, y, keyCode) {
     controls.push(control);
     return control;
 }
-  
+
+function cleanControls() {
+    controls.length = 0;
+}  
 
 export {
     Control,
