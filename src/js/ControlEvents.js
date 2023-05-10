@@ -40,6 +40,28 @@ class PlayerTouchControl extends Control {
         this.playerDegrees = playerDegrees;
     }
 
+
+    isAffectedByTouches(touches) {
+        return touches
+            .map(t => { let coordinate = { X: t.clientX - canvasWidth/2, Y: t.clientY - canvasHeight/2 }; return coordinate; }) 
+            .map(coord => Math.atan2(coord.Y, coord.X)*180/Math.PI)
+            .map(touchDegrees => { let degrees = 90 - touchDegrees; return degrees < 0 ? degrees+360 : degrees; })
+            .filter(touchDegrees => {
+                let lowerLimit = this.playerDegrees - this.degreesPerPlayer/2;
+                if (lowerLimit < 0) lowerLimit += 360;
+                let upperLimit = this.playerDegrees + this.degreesPerPlayer/2;
+                if (upperLimit > 360) upperLimit -= 360;
+
+                let isOverLowerLimit = touchDegrees > lowerLimit;
+                let isUnderUpperLimit = touchDegrees < upperLimit;
+                
+                if (lowerLimit < upperLimit)
+                    return isOverLowerLimit && isUnderUpperLimit;
+                else
+                    return isOverLowerLimit || isUnderUpperLimit;
+            }).length > 0;
+    }
+
 }
 
 const playerControlKeyCodes = [80, 76, 77, 90, 65, 81];
@@ -96,7 +118,7 @@ function handleMove(event) {
 function handleEnd(event) {
     let touchIndex = ongoingTouches.findIndex((tch) => tch.pointerId == event.pointerId)
     playerTouchControls.forEach(ptc => {
-        if (isAffectedByTouches(ptc, [ongoingTouches[touchIndex]])) 
+        if (ptc.isAffectedByTouches([ongoingTouches[touchIndex]])) 
             ptc.onKeyUp()
         });
     ongoingTouches.splice(touchIndex, 1); 
@@ -104,31 +126,10 @@ function handleEnd(event) {
 
 function triggerPlayerTouchControls() {
     playerTouchControls.forEach(ptc => {
-        if (isAffectedByTouches(ptc, ongoingTouches)) 
+        if (ptc.isAffectedByTouches(ongoingTouches)) 
             ptc.onKey();
     });
 }
-
-function isAffectedByTouches(playerTouchControl, touches) {
-    return touches
-        .map(t => { let coordinate = { X: t.clientX - canvasWidth/2, Y: t.clientY - canvasHeight/2 }; return coordinate; }) 
-        .map(t => Math.atan2(t.Y, t.X)*180/Math.PI)
-        .map(touchDegrees => { let degrees = 90 - touchDegrees; return degrees < 0 ? degrees+360 : degrees; })
-        .filter(touchDegrees => {
-            let lowerLimit = playerTouchControl.playerDegrees - playerTouchControl.degreesPerPlayer/2;
-            if (lowerLimit < 0) lowerLimit += 360;
-            let upperLimit = playerTouchControl.playerDegrees + playerTouchControl.degreesPerPlayer/2;
-            if (upperLimit > 360) upperLimit -= 360;
-
-            let isOverLowerLimit = touchDegrees > lowerLimit;
-            let isUnderUpperLimit = touchDegrees < upperLimit;
-            
-            if (playerTouchControl.playerDegrees != 0)
-                return isOverLowerLimit && isUnderUpperLimit;
-            else
-                return isOverLowerLimit || isUnderUpperLimit;
-        }).length > 0;
-    }
 
 function getPlayerControls(playerNumber) {
     playerTouchControls.length = 0;
