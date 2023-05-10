@@ -1,12 +1,10 @@
 import { Layer } from "./Layer.js";
 import { GameLayer } from "./GameLayer.js";
 import { Model } from "../models/Model.js";
-import { images, player1Assets, player2Assets } from "../Res.js";
+import { images } from "../Res.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
-import { Player } from "../models/Player.js";
-import { PlayerCpu } from "../models/PlayerCpu.js";
 import { Key } from "../models/Key.js";
-import { KEYS, getPlayerControls } from "../ControlEvents.js"
+import { KEYS } from "../ControlEvents.js"
 import { restartAudio } from "../AudioManager.js";
 
 class MenuLayer extends Layer {
@@ -26,12 +24,10 @@ class MenuLayer extends Layer {
     processControls() {
         this.playerNumber = 2;
         if (this.singlePlayerKey.consumeControl()) {
-            let playerControls = getPlayerControls(1);
-            setLayer(new GameLayer([new Player(player1Assets, true, playerControls[0]), new PlayerCpu(player2Assets, false)]));
+            setLayer(new GameLayer(2, 1));
         }
         else if (this.multiPlayerKey.consumeControl()) {
-            let playerControls = getPlayerControls(2);
-            setLayer(new GameLayer([new Player(player1Assets, true, playerControls[0]), new Player(player2Assets, false, playerControls[1])]));
+            setLayer(new GameLayer(2, 2));
         }
         this.howToKey.consumeControl();
     }

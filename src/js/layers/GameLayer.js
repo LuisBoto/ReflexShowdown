@@ -1,19 +1,27 @@
 import { Layer } from "./Layer.js";
 import { playAmbientMusic, playLaunchSound, playMatchStart, playSlashSound, restartAudio } from "../AudioManager.js";
-import { images } from "../Res.js";
+import { images, playerAssets } from "../Res.js";
 import { Model } from "../models/Model.js";
 import { Slash } from "../models/Slash.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
-import { KEYS } from "../ControlEvents.js";
 import { MenuLayer } from "./MenuLayer.js";
 import { Key } from "../models/Key.js";
 import { StrokedText } from "../models/StrokedText.js";
+import { KEYS, getPlayerControls } from "../ControlEvents.js"
+import { Player } from "../models/Player.js";
+import { PlayerCpu } from "../models/PlayerCpu.js";
 
 class GameLayer extends Layer {
 
-    constructor(players) {
+    constructor(totalPlayerNumber, humanPlayerNumber) {
         super();
-        this.players = players;
+        this.players = [];
+
+        let playerControls = getPlayerControls(humanPlayerNumber);
+        for (let i = 0; i < humanPlayerNumber; i++) 
+            this.players.push(new Player(playerAssets[i], i%2==0, playerControls[i]))
+        for (let j = 0; j < totalPlayerNumber-humanPlayerNumber; j++) 
+            this.players.push(new PlayerCpu(playerAssets[humanPlayerNumber+j], humanPlayerNumber+j%2==0))
         this.initiate();
     }
 

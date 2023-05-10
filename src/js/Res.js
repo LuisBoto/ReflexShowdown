@@ -43,6 +43,8 @@ let player2Assets = {
     lose: images.player2Lose
 }
 
+let playerAssets = [player1Assets, player2Assets];
+
 let routeImages = Object.values(images);
 function loadImages(index, callback) {
     cache[routeImages[index]] = new Image();
@@ -61,6 +63,5 @@ export {
     loadImages,
     images,
     cache,
-    player1Assets,
-    player2Assets
+    playerAssets
 }
