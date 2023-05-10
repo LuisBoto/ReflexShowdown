@@ -4,7 +4,7 @@ import { images } from "../Res.js";
 import { Model } from "../models/Model.js";
 import { Slash } from "../models/Slash.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
-import { escapeKeyControl } from "../ControlEvents.js";
+import { KEYS } from "../ControlEvents.js";
 import { MenuLayer } from "./MenuLayer.js";
 import { Key } from "../models/Key.js";
 import { StrokedText } from "../models/StrokedText.js";
@@ -24,7 +24,7 @@ class GameLayer extends Layer {
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
         this.slash = new Slash(images.slash2);
         this.winnerTime = new StrokedText("", canvasWidth*0.5, canvasHeight*0.2);
-        this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, escapeKeyControl, "Back to menu", "esc");
+        this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, KEYS.ESCAPE, "Back to menu", "esc");
 
         this.awaitingInput = false;
         this.signal = false;
@@ -35,7 +35,7 @@ class GameLayer extends Layer {
     }
 
     processControls() {
-        if (escapeKeyControl.consume())
+        if (this.backToMenuKey.consumeControl())
             return setLayer(new MenuLayer());
         if (!this.awaitingInput) 
             this.players.forEach(player => player.skipControls());

@@ -1,17 +1,26 @@
 import { images } from "../Res.js";
 import { Model } from "./Model.js";
 import { Text } from "./Text.js";
+import { getButtonControlOn } from "../ControlEvents.js";
+import { Control } from "../ControlEvents.js";
 
 class Key extends Model {
 
-    constructor(x, y, keyControl, keyTag, keyText) {
+    constructor(x, y, key, keyTag, keyText) {
         super(images.key, x, y);
-        this.keyControl = keyControl;
-        this.text = new Text(keyText ? keyText : keyControl.getCharacterFromKeyCode(), x, y, true);
+        if (key instanceof Control)
+            this.keyControl = key;
+        else
+            this.keyControl = getButtonControlOn(this.x, this.y, key);
         
         this.setTag(keyTag);
+        this.text = new Text(keyText ? keyText : this.keyControl.getCharacterFromKeyCode(), x, y, true);
         this.isPressed = 0;
         this.pressedY = this.y+4;
+    }
+
+    consumeControl() {
+        return this.keyControl.consume();
     }
 
     draw() {

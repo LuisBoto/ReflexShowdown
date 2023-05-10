@@ -41,9 +41,9 @@ class PlayerTouchControl extends Control {
     }
 
 
-    isAffectedByTouches(touches) {
+    isTriggeredByTouches(touches) {
         return touches
-            .map(t => { let coordinate = { X: t.clientX - canvasWidth/2, Y: t.clientY - canvasHeight/2 }; return coordinate; }) 
+            .map(t => { let coord = { X: t.clientX - canvasWidth/2, Y: t.clientY - canvasHeight/2 }; return coord; }) 
             .map(coord => Math.atan2(coord.Y, coord.X)*180/Math.PI)
             .map(touchDegrees => { let degrees = 90 - touchDegrees; return degrees < 0 ? degrees+360 : degrees; })
             .filter(touchDegrees => {
@@ -64,20 +64,43 @@ class PlayerTouchControl extends Control {
 
 }
 
-const playerControlKeyCodes = [80, 76, 77, 90, 65, 81];
-let singlePlayerControl = new Control(81);
-let multiPlayerControl = new Control(80);
-let escapeKeyControl = new Control(27);
-const controls = [];
-const playerTouchControls = [];
-const buttonTouchControls = [];
+class ButtonTouchControl extends Control {
 
-function updateControls() {
-    controls.length = 0;
-    controls.push(...playerTouchControls, ...buttonTouchControls, singlePlayerControl, multiPlayerControl, escapeKeyControl);
+    constructor(keyCode, x, y) {
+        super(keyCode);
+        this.x = x;
+        this.y = y;
+    }
+
+    isTriggeredByTouches(touches) {
+        return touches
+            .map(t => { let coord = { X: t.clientX, Y: t.clientY }; return coord; })
+            .filter(coord => {
+                let topLimit = this.y - canvasHeight/10;
+                let bottomLimit = this.y + canvasHeight/10;
+                let rightLimit = this.x + canvasWidth/20;
+                let leftLimit = this.x - canvasWidth/20;
+                return (coord.X > leftLimit && coord.X < rightLimit) 
+                    && (coord.Y > topLimit && coord.Y < bottomLimit)
+            }).length > 0;
+    }
 }
-updateControls();
 
+const KEYS = {
+    ESCAPE: 27,
+    A: 65,
+    P: 80,
+    L: 76,
+    M: 77,
+    Q: 81,
+    Z: 90,
+}
+const playerControlKeyCodes = [KEYS.P, KEYS.L, KEYS.M, KEYS.Z, KEYS.A, KEYS.Q];
+const controls = [];
+
+function cleanControls() {
+    controls.length = 0;
+}
 
 // ###### KEYBOARD EVENTS
 window.addEventListener('keydown', onKeyDown, false);
@@ -105,46 +128,48 @@ canvas.addEventListener("pointercancel", handleEnd, false);
 
 function handleStart(event) {
     ongoingTouches.push(event);
-    triggerPlayerTouchControls();
+    triggerTouchControls();
 }
 
 function handleMove(event) {
     ongoingTouches.splice(
         ongoingTouches.findIndex((tch) => tch.pointerId == event.pointerId), 
         1, event); 
-    triggerPlayerTouchControls();
+    triggerTouchControls();
 }
   
 function handleEnd(event) {
     let touchIndex = ongoingTouches.findIndex((tch) => tch.pointerId == event.pointerId)
-    playerTouchControls.forEach(ptc => {
-        if (ptc.isAffectedByTouches([ongoingTouches[touchIndex]])) 
-            ptc.onKeyUp()
-        });
+    controls.filter(ptc => ptc.isTriggeredByTouches([ongoingTouches[touchIndex]]))
+           .forEach(ptc => ptc.onKeyUp());
     ongoingTouches.splice(touchIndex, 1); 
 }
 
-function triggerPlayerTouchControls() {
-    playerTouchControls.forEach(ptc => {
-        if (ptc.isAffectedByTouches(ongoingTouches)) 
-            ptc.onKey();
-    });
+function triggerTouchControls() {
+    controls.filter(tc => tc.isTriggeredByTouches(ongoingTouches))
+        .forEach(tc => tc.onKey());
 }
 
 function getPlayerControls(playerNumber) {
-    playerTouchControls.length = 0;
     let degreesPerPlayer = 360 / playerNumber;
+    let playerControls = [];
     for (let i = 0; i < playerNumber; i++) 
-        playerTouchControls.push(new PlayerTouchControl(playerControlKeyCodes[i], degreesPerPlayer, 360-(i*degreesPerPlayer+degreesPerPlayer/2)));
-    updateControls();
-    return playerTouchControls;
+        playerControls.push(new PlayerTouchControl(playerControlKeyCodes[i], degreesPerPlayer, 360-(i*degreesPerPlayer+degreesPerPlayer/2)));
+    controls.push(...playerControls);
+    return playerControls;
+}
+
+function getButtonControlOn(x, y, keyCode) {
+    let control = new ButtonTouchControl(keyCode, x, y);
+    controls.push(control);
+    return control;
 }
   
 
 export {
     Control,
     getPlayerControls,
-    singlePlayerControl,
-    multiPlayerControl,
-    escapeKeyControl
+    getButtonControlOn,
+    KEYS,
+    cleanControls
 }

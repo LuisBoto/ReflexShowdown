@@ -6,7 +6,7 @@ import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { Player } from "../models/Player.js";
 import { PlayerCpu } from "../models/PlayerCpu.js";
 import { Key } from "../models/Key.js";
-import { multiPlayerControl, singlePlayerControl, getPlayerControls, escapeKeyControl } from "../ControlEvents.js"
+import { KEYS, getPlayerControls } from "../ControlEvents.js"
 import { restartAudio } from "../AudioManager.js";
 
 class MenuLayer extends Layer {
@@ -18,22 +18,22 @@ class MenuLayer extends Layer {
     initiate() {
         restartAudio();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
-        this.singlePlayerKey = new Key(canvasWidth*0.3, canvasHeight*0.4, singlePlayerControl, "Singleplayer");
-        this.multiPlayerKey = new Key(canvasWidth*0.700, canvasHeight*0.4, multiPlayerControl, "Multiplayer");
-        this.howToKey = new Key(canvasWidth*0.500, canvasHeight*0.75, escapeKeyControl, "How to play?", "esc");
+        this.singlePlayerKey = new Key(canvasWidth*0.3, canvasHeight*0.4, KEYS.Q, "Singleplayer");
+        this.multiPlayerKey = new Key(canvasWidth*0.700, canvasHeight*0.4, KEYS.P, "Multiplayer");
+        this.howToKey = new Key(canvasWidth*0.500, canvasHeight*0.75, KEYS.ESCAPE, "How to play?", "esc");
     }
 
     processControls() {
         this.playerNumber = 2;
-        if (singlePlayerControl.consume()) {
+        if (this.singlePlayerKey.consumeControl()) {
             let playerControls = getPlayerControls(1);
             setLayer(new GameLayer([new Player(player1Assets, true, playerControls[0]), new PlayerCpu(player2Assets, false)]));
         }
-        else if (multiPlayerControl.consume()) {
+        else if (this.multiPlayerKey.consumeControl()) {
             let playerControls = getPlayerControls(2);
             setLayer(new GameLayer([new Player(player1Assets, true, playerControls[0]), new Player(player2Assets, false, playerControls[1])]));
         }
-        escapeKeyControl.consume();
+        this.howToKey.consumeControl();
     }
 
     draw() {

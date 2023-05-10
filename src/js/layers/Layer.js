@@ -1,7 +1,9 @@
+import { cleanControls } from "../ControlEvents.js"
+
 class Layer {
 
     constructor() {
-
+        cleanControls();
     }
 
     update (){
