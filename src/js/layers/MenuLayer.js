@@ -24,10 +24,10 @@ class MenuLayer extends Layer {
     processControls() {
         this.playerNumber = 2;
         if (this.singlePlayerKey.consumeControl()) {
-            setLayer(new GameLayer(2, 1));
+            setLayer(new GameLayer(1, 5));
         }
         else if (this.multiPlayerKey.consumeControl()) {
-            setLayer(new GameLayer(2, 2));
+            setLayer(new GameLayer(2, 0));
         }
         this.howToKey.consumeControl();
     }

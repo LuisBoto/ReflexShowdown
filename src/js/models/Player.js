@@ -4,18 +4,20 @@ import { Key } from "./Key.js";
 
 class Player extends Model {
 
-    constructor(imageAssets, isLeftSide, control) {
-        super(imageAssets.base);
+    constructor(imageAssets, x, y, control) {
+        super(imageAssets.base, x, y);
+        this.initialX = x;
+        this.initialY = y;
         this.assets = imageAssets;
-        this.isLeftSide = isLeftSide;
+        this.isLeftSide = this.x < canvasWidth / 2;
         this.control = control;
         this.initiate();
     }
 
     initiate() {
         this.setImage(this.assets.base);
-        this.x = this.isLeftSide ? canvasWidth*0.2 : canvasWidth*0.8;
-        this.y = canvasHeight*0.63;
+        this.x = this.initialX;
+        this.y = this.initialY;
         this.control.consume();
         this.control.enableTimeMeasurement = true;
         this.launchTime = -1;
@@ -55,20 +57,23 @@ class Player extends Model {
     doVictory() {
         this.setImage(this.assets.win);
         this.#calculateFinalVictoryPosition();
-        this.key.setX(this.x);
+        console.log(this.y);
+        this.key.setCoords(this.x, this.y);
+        console.log(this.key.y);
     }
 
     doDefeat() {
         this.setImage(this.assets.lose);
         this.x = canvasWidth*0.5;
-        this.key.setX(this.x);
+        this.y = canvasHeight*0.5;
+        this.key.setCoords(this.x, this.y+this.height*0.6);
     }
 
     #calculateFinalVictoryPosition() {
         let x1 = this.x;
         let y1 = this.y;
-        let x2 = canvasWidth; // canvasWidth/2;
-        let y2 = this.y; // canvasHeight/2;
+        let x2 = canvasWidth/2;
+        let y2 = canvasHeight/2;
         let dashLine = (x) => ((x-x1)/(x2-x1)) * (y2-y1) + y1
 
         this.x = canvasWidth - this.x;

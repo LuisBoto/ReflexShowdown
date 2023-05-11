@@ -13,15 +13,9 @@ import { PlayerCpu } from "../models/PlayerCpu.js";
 
 class GameLayer extends Layer {
 
-    constructor(totalPlayerNumber, humanPlayerNumber) {
+    constructor(humanPlayerNumber, cpuPlayerNumber) {
         super();
-        this.players = [];
-
-        let playerControls = getPlayerControls(humanPlayerNumber);
-        for (let i = 0; i < humanPlayerNumber; i++) 
-            this.players.push(new Player(playerAssets[i], i%2==0, playerControls[i]))
-        for (let j = 0; j < totalPlayerNumber-humanPlayerNumber; j++) 
-            this.players.push(new PlayerCpu(playerAssets[humanPlayerNumber+j], humanPlayerNumber+j%2==0))
+        this.createPlayers(humanPlayerNumber, cpuPlayerNumber);
         this.initiate();
     }
 
@@ -40,6 +34,22 @@ class GameLayer extends Layer {
         this.players.forEach(p => p.initiate())
 
         this.playStartAnimation();
+    }
+
+    createPlayers(humanPlayerNumber, cpuPlayerNumber) {
+        this.players = [];
+        let degreesPerPlayer = 360 / (humanPlayerNumber + cpuPlayerNumber);
+
+        let playerControls = getPlayerControls(humanPlayerNumber);
+        for (let i = 0; i < humanPlayerNumber + cpuPlayerNumber; i++) {
+            let currentAngle = (360-(i*degreesPerPlayer+degreesPerPlayer/2)) * Math.PI/180 - Math.PI/2;
+            let x = canvasWidth/3*Math.cos(currentAngle)+canvasWidth/2;
+            let y = canvasHeight/3*Math.sin(currentAngle)+canvasHeight/2;
+            if (i < humanPlayerNumber)
+                this.players.push(new Player(playerAssets[i], x, y, playerControls[i]));
+            else
+                this.players.push(new PlayerCpu(playerAssets[(humanPlayerNumber-1+i)%playerAssets.length], x, y));
+        }
     }
 
     processControls() {

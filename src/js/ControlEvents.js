@@ -116,10 +116,9 @@ function onKeyUp(event) {
 
 // ###### TOUCHSCREEN / MOUSE EVENTS
 const ongoingTouches = [];
-let canvas = document.getElementById("canvas");
-canvas.addEventListener("pointerdown", handleStart, false);
-canvas.addEventListener("pointerup", handleEnd, false);
-canvas.addEventListener("pointercancel", handleEnd, false);
+window.addEventListener("pointerdown", handleStart, false);
+window.addEventListener("pointerup", handleEnd, false);
+window.addEventListener("pointercancel", handleEnd, false);
 //canvas.addEventListener("pointermove", handleMove, false);
 
 function handleStart(event) {

@@ -60,10 +60,15 @@ class Key extends Model {
             this.isPressed = false;
     }
 
-    setX(x) {
+    setCoords(x, y) {
         this.x = x;
+        this.y = y;
         this.text.x = x;
-        if (this.tagged) this.tag.x = x;
+        this.text.y = y;
+        if (this.tagged) {
+            this.tag.x = x;
+            this.tag.y = y+this.height; 
+        }
     }
 
     setTag(tagText) {

@@ -4,8 +4,8 @@ import { Control } from "../ControlEvents.js";
 
 class PlayerCpu extends Player {
 
-    constructor(imageAssets, isLeftSide) {
-        super(imageAssets, isLeftSide, new Control());
+    constructor(imageAssets, x, y) {
+        super(imageAssets, x, y, new Control());
     }
 
     initiate() {
