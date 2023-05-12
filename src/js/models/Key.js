@@ -15,8 +15,9 @@ class Key extends Model {
         
         this.setTag(keyTag);
         this.text = new Text(keyText ? keyText : this.keyControl.getCharacterFromKeyCode(), x, y, true);
-        this.isPressed = 0;
-        this.pressedY = this.y+4;
+        this.isPressed = false;
+        this.pressedYModifier = 4;
+        this.pressedY = this.y+this.pressedYModifier;
     }
 
     consumeControl() {
@@ -31,7 +32,7 @@ class Key extends Model {
         }
         else {
             this.setImage(images.key);
-            this.y = this.pressedY - 4;
+            this.y = this.pressedY - this.pressedYModifier;
         }
         super.draw();
 
@@ -63,6 +64,7 @@ class Key extends Model {
     setCoords(x, y) {
         this.x = x;
         this.y = y;
+        this.pressedY = this.y + this.pressedYModifier;
         this.text.x = x;
         this.text.y = y;
         if (this.tagged) {

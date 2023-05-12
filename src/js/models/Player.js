@@ -22,7 +22,8 @@ class Player extends Model {
         this.control.enableTimeMeasurement = true;
         this.launchTime = -1;
         this.attacked = false;
-        this.key = new Key(this.x, this.y+this.height*0.6, this.control);
+        this.keyYModifier = this.height*0.6
+        this.key = new Key(this.x, this.y+this.keyYModifier, this.control);
     }
 
     update() {
@@ -57,16 +58,14 @@ class Player extends Model {
     doVictory() {
         this.setImage(this.assets.win);
         this.#calculateFinalVictoryPosition();
-        console.log(this.y);
-        this.key.setCoords(this.x, this.y);
-        console.log(this.key.y);
+        this.key.setCoords(this.x, this.y+this.keyYModifier);
     }
 
     doDefeat() {
         this.setImage(this.assets.lose);
         this.x = canvasWidth*0.5;
         this.y = canvasHeight*0.5;
-        this.key.setCoords(this.x, this.y+this.height*0.6);
+        this.key.setCoords(this.x, this.y+this.keyYModifier);
     }
 
     #calculateFinalVictoryPosition() {
