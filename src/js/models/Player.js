@@ -28,7 +28,7 @@ class Player extends Model {
 
     update() {
         if (this.getTime() > 0 && this.launchTime != -1) { 
-            this.key.setTag(this.getTime() > 0 ? this.getTime()+"ms" : "-");
+            this.key.setTag(this.getTime()+"ms");
             this.control.enableTimeMeasurement = false;
         }
     }

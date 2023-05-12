@@ -47,7 +47,7 @@ class GameLayer extends Layer {
             let x = canvasWidth/3*Math.cos(currentAngle)+canvasWidth/2;
             let y = canvasHeight/3*Math.sin(currentAngle)+canvasHeight/2;
             if (i < humanPlayerNumber)
-                this.players.push(new Player(playerAssets[i], x, y, playerControls[i]));
+                this.players.push(new Player(playerAssets[i%playerAssets.length], x, y, playerControls[i]));
             else
                 this.players.push(new PlayerCpu(playerAssets[(humanPlayerNumber-1+i)%playerAssets.length], x, y));
         }

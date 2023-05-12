@@ -17,7 +17,7 @@ let player2Assets = {
 let playerAssets = [player1Assets, player2Assets];
 
 let routeImages = Object.values(images);
-function loadImages(index, callback) {
+function loadImages(index = 0, callback) {
     cache[routeImages[index]] = new Image();
     cache[routeImages[index]].src = routeImages[index];
     cache[routeImages[index]].onload = function() {

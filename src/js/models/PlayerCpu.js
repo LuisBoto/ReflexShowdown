@@ -12,18 +12,17 @@ class PlayerCpu extends Player {
         super.initiate();
         this.timeTextYModifier = this.height*0.6;
         this.timeText = new Text("", this.x, this.y+this.timeTextYModifier, true);
-        this.attackDelay = 10; // To avoid humanly unbeatable times
+        this.score = Math.floor(Math.random()*400 + 100);
     }
 
     update() {
         if (this.launchTime != -1) {
-            if (this.getTime() > 0)
-                this.timeText.setValue(this.getTime() > 0 ? this.getTime()+"ms" : "-");
-            else if (this.attackDelay <= 0 && Math.random()*15 <= 1) {
+            if (this.getTime() >= 0)
+                this.timeText.setValue(this.getTime()+"ms");
+            else if (Date.now() - this.launchTime >= this.score) {
                 this.attacked = true;
                 this.attackTime = Date.now();
             }
-            this.attackDelay -= 1;
         }
     }
 
