@@ -27,7 +27,7 @@ class MenuLayer extends Layer {
             setLayer(new GameLayer(1, 1));
         }
         else if (this.multiPlayerKey.consumeControl()) {
-            setLayer(new GameLayer(6, 0));
+            setLayer(new GameLayer(3, 0));
         }
         this.howToKey.consumeControl();
     }

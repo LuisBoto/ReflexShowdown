@@ -45,7 +45,7 @@ class PlayerTouchControl extends Control {
         return touches
             .map(t => { let coord = { X: t.clientX - canvasWidth/2, Y: t.clientY - canvasHeight/2 }; return coord; }) 
             .map(coord => Math.atan2(coord.Y, coord.X)*180/Math.PI)
-            .map(touchDegrees => { let degrees = 90 - touchDegrees; return degrees < 0 ? degrees+360 : degrees; })
+            .map(touchDegrees => { let degrees = 90 + touchDegrees; return degrees < 0 ? degrees+360 : degrees; })
             .filter(touchDegrees => {
                 let lowerLimit = this.playerDegrees - this.degreesPerPlayer/2;
                 if (lowerLimit < 0) lowerLimit += 360;
