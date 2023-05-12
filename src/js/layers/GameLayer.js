@@ -1,6 +1,7 @@
 import { Layer } from "./Layer.js";
 import { playAmbientMusic, playLaunchSound, playMatchStart, playSlashSound, restartAudio } from "../AudioManager.js";
-import { images, playerAssets } from "../Res.js";
+import { playerAssets } from "../ResourceLoader.js";
+import { images } from "../Resources.js";
 import { Model } from "../models/Model.js";
 import { Slash } from "../models/Slash.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";

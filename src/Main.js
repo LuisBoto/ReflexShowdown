@@ -1,5 +1,5 @@
 import { MenuLayer } from "./js/layers/MenuLayer.js";
-import { loadImages } from "./js/Res.js";
+import { loadImages } from "./js/ResourceLoader.js";
 
 // Canvas & context
 let canvas = document.getElementById("canvas");

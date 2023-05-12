@@ -10,7 +10,8 @@ class PlayerCpu extends Player {
 
     initiate() {
         super.initiate();
-        this.timeText = new Text("", this.x, this.y+this.height*0.6, true);
+        this.timeTextYModifier = this.height*0.6;
+        this.timeText = new Text("", this.x, this.y+this.timeTextYModifier, true);
         this.attackDelay = 10; // To avoid humanly unbeatable times
     }
 
@@ -42,11 +43,13 @@ class PlayerCpu extends Player {
     doVictory() {
         super.doVictory();
         this.timeText.x = this.x;
+        this.timeText.y = this.y+this.timeTextYModifier
     }
 
     doDefeat() {
         super.doDefeat();
         this.timeText.x = this.x;
+        this.timeText.y = this.y+this.timeTextYModifier
     }
 
 }

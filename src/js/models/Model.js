@@ -1,4 +1,4 @@
-import { cache } from "../Res.js";
+import { cache } from "../ResourceLoader.js";
 import { context } from "../../Main.js";
 
 class Model {

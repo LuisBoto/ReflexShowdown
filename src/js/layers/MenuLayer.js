@@ -1,7 +1,7 @@
 import { Layer } from "./Layer.js";
 import { GameLayer } from "./GameLayer.js";
 import { Model } from "../models/Model.js";
-import { images } from "../Res.js";
+import { images } from "../Resources.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { Key } from "../models/Key.js";
 import { KEYS } from "../ControlEvents.js"

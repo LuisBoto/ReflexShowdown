@@ -1,4 +1,4 @@
-import { images } from "../Res.js";
+import { images } from "../Resources.js";
 import { Model } from "./Model.js";
 import { Text } from "./Text.js";
 import { getButtonControlOn } from "../ControlEvents.js";
