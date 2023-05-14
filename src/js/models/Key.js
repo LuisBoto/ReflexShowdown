@@ -34,7 +34,8 @@ class Key extends Model {
             this.setImage(images.key);
             this.y = this.pressedY - this.pressedYModifier;
         }
-        super.draw();
+        
+        this.drawProportionalToCanvas(9);
 
         this.drawText();
         this.drawTag();

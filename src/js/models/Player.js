@@ -23,7 +23,7 @@ class Player extends Model {
         this.control.enableTimeMeasurement = true;
         this.launchTime = -1;
         this.attacked = false;
-        this.keyYModifier = this.height*0.6
+        this.keyYModifier = canvasHeight/8;
         this.key = new Key(this.x, this.y+this.keyYModifier, this.control);
     }
 
@@ -35,7 +35,7 @@ class Player extends Model {
     }
 
     draw() {
-        this.drawResize(this.width*0.8, this.height*0.8);
+        this.drawProportionalToCanvas(6);
         this.key.draw();
     }
 

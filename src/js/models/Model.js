@@ -1,5 +1,5 @@
 import { cache } from "../ResourceLoader.js";
-import { context } from "../../Main.js";
+import { context, canvasHeight } from "../../Main.js";
 
 class Model {
 
@@ -34,7 +34,13 @@ class Model {
     drawResize(imageWidth, imageHeight) {
         context.drawImage(this.image,
             this.x - imageWidth/2, this.y - imageHeight/2,
-            imageWidth, imageHeight);
+            Math.floor(imageWidth), Math.floor(imageHeight));
+    }
+
+    drawProportionalToCanvas(proportion) {
+        let sizeRelativeToCanvas = canvasHeight / proportion;
+        let ratio = this.height/this.width;
+        this.drawResize(sizeRelativeToCanvas, sizeRelativeToCanvas*ratio);
     }
 
     setImage(imageRoute) {
