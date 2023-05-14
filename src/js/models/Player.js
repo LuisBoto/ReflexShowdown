@@ -1,16 +1,17 @@
 import { Model } from "./Model.js";
 import { canvasHeight, canvasWidth } from "../../Main.js";
 import { Key } from "./Key.js";
+import { getPlayerControl } from "../ControlEvents.js";
 
 class Player extends Model {
 
-    constructor(imageAssets, x, y, control) {
+    constructor(imageAssets, x, y, degreesPerPlayer, degreePosition) {
         super(imageAssets.base, x, y);
         this.initialX = x;
         this.initialY = y;
         this.assets = imageAssets;
         this.isLeftSide = this.x < canvasWidth / 2;
-        this.control = control;
+        this.control = getPlayerControl(degreesPerPlayer, degreePosition);
         this.initiate();
     }
 

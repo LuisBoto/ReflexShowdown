@@ -134,16 +134,14 @@ function handleEnd(event) {
     ongoingTouches.splice(touchIndex, 1); 
 }
 
-function getPlayerControls(playerNumber) {
-    let degreesPerPlayer = 360 / playerNumber;
-    let playerControls = [];
-    for (let i = 0; i < playerNumber; i++) 
-        playerControls.push(new PlayerTouchControl(playerControlKeyCodes[i], degreesPerPlayer, 360-(i*degreesPerPlayer+degreesPerPlayer/2)));
-    controls.push(...playerControls);
-    return playerControls;
+function getPlayerControl(degreesPerPlayer, playerDegreePosition) {
+    let newPlayerControl = new PlayerTouchControl(
+        playerControlKeyCodes[controls.length%playerControlKeyCodes.length], degreesPerPlayer, playerDegreePosition);
+    controls.push(newPlayerControl);
+    return newPlayerControl;
 }
 
-function getButtonControlOn(x, y, keyCode) {
+function getButtonControl(x, y, keyCode) {
     let control = new ButtonTouchControl(keyCode, x, y);
     controls.push(control);
     return control;
@@ -155,8 +153,8 @@ function cleanControls() {
 
 export {
     Control,
-    getPlayerControls,
-    getButtonControlOn,
+    getPlayerControl,
+    getButtonControl,
     KEYS,
     cleanControls
 }

@@ -1,7 +1,7 @@
 import { images } from "../Resources.js";
 import { Model } from "./Model.js";
 import { Text } from "./Text.js";
-import { getButtonControlOn } from "../ControlEvents.js";
+import { getButtonControl } from "../ControlEvents.js";
 import { Control } from "../ControlEvents.js";
 
 class Key extends Model {
@@ -11,7 +11,7 @@ class Key extends Model {
         if (key instanceof Control)
             this.keyControl = key;
         else
-            this.keyControl = getButtonControlOn(this.x, this.y, key);
+            this.keyControl = getButtonControl(this.x, this.y, key);
         
         this.setTag(keyTag);
         this.text = new Text(keyText ? keyText : this.keyControl.getCharacterFromKeyCode(), x, y, true);

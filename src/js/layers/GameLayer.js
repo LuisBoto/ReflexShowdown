@@ -8,7 +8,7 @@ import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { MenuLayer } from "./MenuLayer.js";
 import { Key } from "../models/Key.js";
 import { StrokedText } from "../models/StrokedText.js";
-import { KEYS, getPlayerControls } from "../ControlEvents.js"
+import { KEYS, getPlayerControl } from "../ControlEvents.js"
 import { Player } from "../models/Player.js";
 import { PlayerCpu } from "../models/PlayerCpu.js";
 
@@ -41,13 +41,13 @@ class GameLayer extends Layer {
         this.players = [];
         let degreesPerPlayer = 360 / (humanPlayerNumber + cpuPlayerNumber);
 
-        let playerControls = getPlayerControls(humanPlayerNumber);
         for (let i = 0; i < humanPlayerNumber + cpuPlayerNumber; i++) {
-            let currentAngle = (360-(i*degreesPerPlayer+degreesPerPlayer/2)) * Math.PI/180 - Math.PI/2;
-            let x = canvasWidth/3*Math.cos(currentAngle)+canvasWidth/2;
-            let y = canvasHeight/3*Math.sin(currentAngle)+canvasHeight/2;
-            if (i < humanPlayerNumber)
-                this.players.push(new Player(playerAssets[i%playerAssets.length], x, y, playerControls[i]));
+            let currentAngle = (360-(i*degreesPerPlayer+degreesPerPlayer/2));
+            let currentRadians = currentAngle * Math.PI/180 - Math.PI/2;
+            let x = canvasWidth/3*Math.cos(currentRadians)+canvasWidth/2;
+            let y = canvasHeight/3*Math.sin(currentRadians)+canvasHeight/2;
+            if (i < humanPlayerNumber) 
+                this.players.push(new Player(playerAssets[i%playerAssets.length], x, y, 360/humanPlayerNumber, currentAngle));
             else
                 this.players.push(new PlayerCpu(playerAssets[(humanPlayerNumber-1+i)%playerAssets.length], x, y));
         }
