@@ -23,7 +23,7 @@ class Player extends Model {
         this.control.enableTimeMeasurement = true;
         this.launchTime = -1;
         this.attacked = false;
-        this.keyYModifier = canvasHeight/8;
+        this.keyYModifier = canvasHeight/7;
         this.key = new Key(this.x, this.y+this.keyYModifier, this.control);
     }
 
@@ -70,6 +70,9 @@ class Player extends Model {
     }
 
     #calculateFinalVictoryPosition() {
+        if (this.x == canvasWidth/2) 
+            return this.y = canvasHeight - this.y;
+        
         let x1 = this.x;
         let y1 = this.y;
         let x2 = canvasWidth/2;

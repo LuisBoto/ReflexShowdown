@@ -26,7 +26,7 @@ class GameLayer extends Layer {
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
         this.slash = new Slash(images.slash2);
-        this.winnerTime = new StrokedText("", canvasWidth*0.5, canvasHeight*0.2);
+        this.winnerTime = new StrokedText("", canvasWidth*0.5, canvasHeight*0.1);
         this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, KEYS.ESCAPE, "Back to menu", "esc");
 
         this.awaitingInput = false;
@@ -44,8 +44,8 @@ class GameLayer extends Layer {
         for (let i = 0; i < humanPlayerNumber + cpuPlayerNumber; i++) {
             let currentAngle = (360-(i*degreesPerPlayer+degreesPerPlayer/2));
             let currentRadians = currentAngle * Math.PI/180 - Math.PI/2;
-            let x = canvasWidth/3*Math.cos(currentRadians)+canvasWidth/2;
-            let y = canvasHeight/3*Math.sin(currentRadians)+canvasHeight/2;
+            let x = canvasWidth/4*Math.cos(currentRadians)+canvasWidth/2;
+            let y = canvasHeight/4*Math.sin(currentRadians)+canvasHeight/2;
             if (i < humanPlayerNumber) 
                 this.players.push(new Player(playerAssets[i%playerAssets.length], x, y, degreesPerPlayer, currentAngle));
             else

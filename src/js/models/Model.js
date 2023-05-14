@@ -39,8 +39,7 @@ class Model {
 
     drawProportionalToCanvas(proportion) {
         let sizeRelativeToCanvas = canvasHeight / proportion;
-        let ratio = this.height/this.width;
-        this.drawResize(sizeRelativeToCanvas, sizeRelativeToCanvas*ratio);
+        this.drawResize(sizeRelativeToCanvas*this.width/this.height, sizeRelativeToCanvas);
     }
 
     setImage(imageRoute) {
