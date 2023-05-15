@@ -27,7 +27,7 @@ class PlayerCpu extends Player {
     }
 
     draw() {
-        this.drawProportionalToCanvas(6);
+        this.drawProportionalToCanvas(this.canvasProportion);
         this.timeText.draw();
     }
 

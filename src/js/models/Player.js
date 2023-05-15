@@ -25,6 +25,7 @@ class Player extends Model {
         this.attacked = false;
         this.keyYModifier = canvasHeight/7;
         this.key = new Key(this.x, this.y+this.keyYModifier, this.control);
+        this.canvasProportion = 3;
     }
 
     update() {
@@ -35,7 +36,7 @@ class Player extends Model {
     }
 
     draw() {
-        this.drawProportionalToCanvas(6);
+        this.drawProportionalToCanvas(this.canvasProportion);
         this.key.draw();
     }
 
@@ -65,7 +66,7 @@ class Player extends Model {
     doDefeat() {
         this.setImage(this.assets.lose);
         this.x = canvasWidth*0.5;
-        this.y = canvasHeight*0.5;
+        this.y = canvasHeight*0.65;
         this.key.setCoords(this.x, this.y+this.keyYModifier);
     }
 
