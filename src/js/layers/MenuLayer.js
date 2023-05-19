@@ -24,7 +24,7 @@ class MenuLayer extends Layer {
         this.howToKey = new Key(canvasWidth*0.500, canvasHeight*0.75, KEYS.ESCAPE, "How to play?", "esc");
 
         this.playerNumber = 2;
-        this.playerNumberText = new Text("Players: 2", canvasWidth*0.5, canvasHeight*0.6, true);
+        this.playerNumberText = new Text("Players: 2", canvasWidth*0.5, canvasHeight*0.5, true);
 
         this.keys = [this.singlePlayerKey, this.multiPlayerKey, this.howToKey, this.increasePlayersKey, this.decreasePlayersKey];
     }
