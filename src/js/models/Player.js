@@ -1,5 +1,5 @@
 import { Model } from "./Model.js";
-import { canvasHeight, canvasWidth } from "../../Main.js";
+import { canvasHeight, canvasWidth, context } from "../../Main.js";
 import { Key } from "./Key.js";
 import { getPlayerControl } from "../ControlEvents.js";
 
@@ -10,7 +10,7 @@ class Player extends Model {
         this.initialX = x;
         this.initialY = y;
         this.assets = imageAssets;
-        this.isLeftSide = this.x < canvasWidth / 2;
+        this.isLeftSide = this.x <= canvasWidth / 2;
         this.control = getPlayerControl(degreesPerPlayer, degreePosition);
         this.initiate();
     }
@@ -36,7 +36,28 @@ class Player extends Model {
     }
 
     draw() {
+        if (this.isLeftSide) 
+            this.drawProportionalToCanvas(this.canvasProportion);
+        else
+            this.drawReversed();
+        this.drawUI();
+    }
+
+    drawReversed() {
+        let x = this.x;
+        let y = this.y;
+        context.save();
+        context.translate(this.x, this.y);
+        this.x = 0;
+        this.y = 0;
+        context.scale(-1,1);
         this.drawProportionalToCanvas(this.canvasProportion);
+        context.restore();
+        this.x = x;
+        this.y = y;
+    }
+
+    drawUI() {
         this.key.draw();
     }
 
