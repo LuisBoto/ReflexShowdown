@@ -88,6 +88,8 @@ class ButtonTouchControl extends Control {
 
 const KEYS = {
     ESCAPE: 27,
+    ARROW_RIGHT: 39,
+    ARROW_LEFT: 37,
     A: 65,
     P: 80,
     L: 76,

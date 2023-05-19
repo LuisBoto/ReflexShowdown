@@ -12,7 +12,7 @@ class PlayerCpu extends Player {
         super.initiate();
         this.timeTextYModifier = this.keyYModifier;
         this.timeText = new Text("", this.x, this.y+this.timeTextYModifier, true);
-        this.score = Math.floor(Math.random()*400 + 100);
+        this.score = Math.floor(Math.random()*400 + 150);
     }
 
     update() {
