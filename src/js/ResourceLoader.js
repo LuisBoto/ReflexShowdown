@@ -2,19 +2,15 @@ import { images } from "./Resources.js";
 
 let cache = [];
 
-let player1Assets = {
-    base: images.player1,
-    win: images.player1Win,
-    lose: images.player1Lose
+let playerAssets = [];
+for (let i=1; i<=6; i++) {
+    playerAssets.push({
+        base: images["player"+i],
+        win: images["player"+i+"Win"],
+        lose: images["player"+i+"Lose"]
+    })
 }
-
-let player2Assets = {
-    base: images.player2,
-    win: images.player2Win,
-    lose: images.player2Lose
-}
-
-let playerAssets = [player1Assets, player2Assets];
+console.log(playerAssets);
 
 let routeImages = Object.values(images);
 function loadImages(index = 0, callback) {
