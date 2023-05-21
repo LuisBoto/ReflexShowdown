@@ -120,7 +120,7 @@ class GameLayer extends Layer {
     }
 
     resetGame() {
-        setTimeout(() => { this.initiate(); }, 2000);
+        setTimeout(() => { this.initiate(); }, 3500);
     }
 }
 

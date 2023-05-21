@@ -1,5 +1,6 @@
 import { Layer } from "./Layer.js";
 import { GameLayer } from "./GameLayer.js";
+import { HowToLayer } from "./HowToLayer.js";
 import { Model } from "../models/Model.js";
 import { Text } from "../models/Text.js";
 import { images } from "../Resources.js";
@@ -25,6 +26,7 @@ class MenuLayer extends Layer {
 
         this.playerNumber = 2;
         this.playerNumberText = new Text("Players: 2", canvasWidth*0.5, canvasHeight*0.5, true);
+        this.playerNumberText.setSize(28);
 
         this.keys = [this.singlePlayerKey, this.multiPlayerKey, this.howToKey, this.increasePlayersKey, this.decreasePlayersKey];
     }
@@ -41,7 +43,8 @@ class MenuLayer extends Layer {
         else if (this.multiPlayerKey.consumeControl()) 
             setLayer(new GameLayer(this.playerNumber, 0));
         
-        this.howToKey.consumeControl();
+        if (this.howToKey.consumeControl())
+            setLayer(new HowToLayer());
     }
 
     draw() {

@@ -16,7 +16,7 @@ class Key extends Model {
         this.setTag(keyTag);
         this.text = new Text(keyText ? keyText : this.keyControl.getCharacterFromKeyCode(), x, y, true);
         this.isPressed = false;
-        this.pressedYModifier = 4;
+        this.pressedYModifier = 1;
         this.pressedY = this.y+this.pressedYModifier;
     }
 
