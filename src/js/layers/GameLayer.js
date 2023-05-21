@@ -21,6 +21,7 @@ class GameLayer extends Layer {
     }
 
     initiate() {
+        this.reset = -1;
         restartAudio();
         playAmbientMusic();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
@@ -63,6 +64,9 @@ class GameLayer extends Layer {
     }
 
     update() {
+        if (this.reset > 0 && this.reset < Date.now())
+            this.initiate();
+
         if (Math.random()*1000 < 5 && this.awaitingInput && !this.signal) {
             this.launchTime = Date.now();
             this.players.forEach(p => p.launchTime = this.launchTime);
@@ -120,7 +124,7 @@ class GameLayer extends Layer {
     }
 
     resetGame() {
-        setTimeout(() => { this.initiate(); }, 3500);
+        this.reset = Date.now() + 3500;
     }
 }
 
