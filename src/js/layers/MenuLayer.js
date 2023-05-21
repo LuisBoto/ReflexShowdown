@@ -2,7 +2,7 @@ import { Layer } from "./Layer.js";
 import { GameLayer } from "./GameLayer.js";
 import { HowToLayer } from "./HowToLayer.js";
 import { Model } from "../models/Model.js";
-import { Text } from "../models/Text.js";
+import { StrokedText } from "../models/StrokedText.js";
 import { images } from "../Resources.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { Key } from "../models/Key.js";
@@ -25,7 +25,7 @@ class MenuLayer extends Layer {
         this.howToKey = new Key(canvasWidth*0.500, canvasHeight*0.75, KEYS.ESCAPE, "How to play?", "esc");
 
         this.playerNumber = 2;
-        this.playerNumberText = new Text("Players: 2", canvasWidth*0.5, canvasHeight*0.5, true);
+        this.playerNumberText = new StrokedText("Players: 2", canvasWidth*0.5, canvasHeight*0.5, true);
         this.playerNumberText.setSize(28);
 
         this.keys = [this.singlePlayerKey, this.multiPlayerKey, this.howToKey, this.increasePlayersKey, this.decreasePlayersKey];

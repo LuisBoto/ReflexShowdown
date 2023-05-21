@@ -8,7 +8,7 @@ import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { MenuLayer } from "./MenuLayer.js";
 import { Key } from "../models/Key.js";
 import { StrokedText } from "../models/StrokedText.js";
-import { KEYS, getPlayerControl } from "../ControlEvents.js"
+import { KEYS } from "../ControlEvents.js"
 import { Player } from "../models/Player.js";
 import { PlayerCpu } from "../models/PlayerCpu.js";
 
@@ -26,7 +26,7 @@ class GameLayer extends Layer {
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
         this.slash = new Slash(images.slash2);
-        this.winnerTime = new StrokedText("", canvasWidth*0.5, canvasHeight*0.1);
+        this.winnerTime = new StrokedText("", canvasWidth*0.5, canvasHeight*0.1, true);
         this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, KEYS.ESCAPE, "Back to menu", "esc");
 
         this.awaitingInput = false;

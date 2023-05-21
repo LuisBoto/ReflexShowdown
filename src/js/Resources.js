@@ -12,6 +12,7 @@ import keyFile from "../res/key.png";
 import pressedKeyFile from "../res/pressedKey.png";
 import slashFile from "../res/slash.png";
 import slash2File from "../res/slash2.png"
+import screenshotFile from "../res/screenshot.png";
 
 let images = {
     menuBackground: menuBackgroundFile,
@@ -27,7 +28,8 @@ let images = {
     key: keyFile,
     pressedKey: pressedKeyFile,
     slash: slashFile,
-    slash2: slash2File
+    slash2: slash2File,
+    screenshot: screenshotFile
 };
 
 export {
