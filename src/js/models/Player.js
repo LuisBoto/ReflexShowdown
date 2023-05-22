@@ -2,6 +2,7 @@ import { Model } from "./Model.js";
 import { canvasHeight, canvasWidth, context } from "../../Main.js";
 import { Key } from "./Key.js";
 import { getPlayerControl } from "../ControlEvents.js";
+import { StrokedText } from "./StrokedText.js";
 
 class Player extends Model {
 
@@ -59,6 +60,13 @@ class Player extends Model {
 
     drawUI() {
         this.key.draw();
+    }
+
+    drawScore(positionY) {
+        new Model(this.assets.base, canvasWidth*0.08, positionY).drawProportionalToCanvas(this.canvasProportion*2);
+        let text = new StrokedText(this.getTime() > 0 ? this.getTime().toString().concat("ms") : "-", canvasWidth*0.13, positionY);
+        text.setSize(15);
+        text.draw();
     }
 
     processControls() {

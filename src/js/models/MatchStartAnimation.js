@@ -26,7 +26,6 @@ class MatchStartAnimation extends Model {
 
     draw() {
         if (!this.isFinished()) {
-            console.log(this.#getFinalGradientColor());
             let gradient = context.createLinearGradient(0, 0, 0, canvasHeight);
             gradient.addColorStop(0, "#FFFFFF00");
             gradient.addColorStop(1, this.#getFinalGradientColor());

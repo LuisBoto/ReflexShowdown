@@ -100,8 +100,17 @@ class GameLayer extends Layer {
 
         if (this.signal && !this.decided) 
             this.exclamation.draw();
-        this.slash.draw();
         this.winnerTime.draw("yellow", "black");
+
+        if (this.decided) {
+            let ranking = this.players.sort((a, b) => a.getTime() - b.getTime());
+            let positionY = canvasHeight*0.3;
+            ranking.forEach(p => {
+                p.drawScore(positionY);
+                positionY += canvasHeight/8;
+            });
+        }
+        this.slash.draw();
     }
 
     playStartAnimation() {
