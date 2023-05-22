@@ -10,7 +10,6 @@ for (let i=1; i<=6; i++) {
         lose: images["player"+i+"Lose"]
     })
 }
-console.log(playerAssets);
 
 let routeImages = Object.values(images);
 function loadImages(index = 0, callback) {

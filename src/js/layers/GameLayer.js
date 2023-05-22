@@ -11,6 +11,7 @@ import { StrokedText } from "../models/StrokedText.js";
 import { KEYS } from "../ControlEvents.js"
 import { Player } from "../models/Player.js";
 import { PlayerCpu } from "../models/PlayerCpu.js";
+import { MatchStartAnimation } from "../models/MatchStartAnimation.js";
 
 class GameLayer extends Layer {
 
@@ -67,6 +68,8 @@ class GameLayer extends Layer {
         if (this.reset > 0 && this.reset < Date.now())
             this.initiate();
 
+        this.matchStartAnimation.update();
+
         if (Math.random()*1000 < 5 && this.awaitingInput && !this.signal) {
             this.launchTime = Date.now();
             this.players.forEach(p => p.launchTime = this.launchTime);
@@ -90,8 +93,10 @@ class GameLayer extends Layer {
 
     draw() {
         this.background.drawResize(canvasWidth, canvasHeight);
-        this.backToMenuKey.draw();
         this.players.forEach(player => player.draw());
+
+        this.matchStartAnimation.draw();
+        this.backToMenuKey.draw();
 
         if (this.signal && !this.decided) 
             this.exclamation.draw();
@@ -101,6 +106,7 @@ class GameLayer extends Layer {
 
     playStartAnimation() {
         playMatchStart();
+        this.matchStartAnimation = new MatchStartAnimation();
         setTimeout(() => {
                 this.awaitingInput = true;
                 console.log("Awaiting input");
