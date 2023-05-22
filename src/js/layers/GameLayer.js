@@ -102,10 +102,10 @@ class GameLayer extends Layer {
             this.exclamation.draw();
         this.winnerTime.draw("yellow", "black");
 
-        if (this.decided) {
-            let ranking = this.players.sort((a, b) => a.getTime() - b.getTime());
+        if (this.decided && this.signal) {
+            let ranking = this.players.sort((a, b) => a.getTime() - b.getTime() );
             let positionY = canvasHeight*0.3;
-            ranking.forEach(p => {
+            ranking.filter(p => p.getTime() >= 0).forEach(p => {
                 p.drawScore(positionY);
                 positionY += canvasHeight/8;
             });
