@@ -86,8 +86,8 @@ class Player extends Model {
 
     doDefeat() {
         this.setImage(this.assets.lose);
-        this.x = canvasWidth*0.5;
-        this.y = canvasHeight*0.65;
+        this.x = Math.random()*(canvasWidth*0.08) + canvasWidth*0.46;
+        this.y = Math.random()*(canvasHeight*0.1) + canvasHeight*0.55;
         this.key.setCoords(this.x, this.y+this.keyYModifier);
     }
 
