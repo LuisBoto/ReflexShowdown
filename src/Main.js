@@ -38,6 +38,7 @@ function setLayer(newLayer) {
 
 window.addEventListener('load', resize, false);
 loadImages(0, startGame);
+window.addEventListener('resize', () => {resize(); layer.initiate();}, false);
 
 export {
     canvas,
