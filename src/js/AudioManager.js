@@ -3,7 +3,7 @@ import matchStartFile from "../res/matchStart.mp3";
 import launchSoundFile from "../res/launchSound.mp3";
 import slashFile from "../res/slash.mp3";
 
-let isMuted = false;
+let muted = false;
 const sounds = {
     ambientMusic : new Audio(ambientWindFile),
     matchStart : new Audio(matchStartFile),
@@ -37,12 +37,16 @@ function restartAudio() {
 
 function play(audio, volume = 1) {
     sounds[audio].volume = volume;
-    if (!isMuted) 
+    if (!muted) 
         sounds[audio].play();
 }
 
-function setMuted(muted) {
-    isMuted = muted;
+function isMuted() {
+    return muted;
+}
+
+function switchMuted() {
+    muted = !muted;
 }
 
 export {
@@ -51,7 +55,8 @@ export {
     playLaunchSound,
     playSlashSound,
     restartAudio,
-    setMuted
+    isMuted,
+    switchMuted
 }
 
 

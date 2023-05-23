@@ -6,6 +6,7 @@ import { StrokedText } from "../models/StrokedText.js";
 import { images } from "../Resources.js";
 import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
 import { Key } from "../models/Key.js";
+import { MuteKey } from "../models/MuteKey.js";
 import { KEYS } from "../ControlEvents.js"
 import { restartAudio } from "../AudioManager.js";
 
@@ -23,12 +24,13 @@ class MenuLayer extends Layer {
         this.increasePlayersKey = new Key(canvasWidth*0.6, canvasHeight*0.6, KEYS.ARROW_RIGHT, "", ">");
         this.decreasePlayersKey = new Key(canvasWidth*0.4, canvasHeight*0.6, KEYS.ARROW_LEFT, "", "<");
         this.howToKey = new Key(canvasWidth*0.500, canvasHeight*0.75, KEYS.ESCAPE, "How to play?", "esc");
+        this.muteKey = new MuteKey(canvasWidth*0.9, canvasHeight*0.1);
 
         this.playerNumber = 2;
         this.playerNumberText = new StrokedText("Players: 2", canvasWidth*0.5, canvasHeight*0.5, true);
         this.playerNumberText.setSize(28);
 
-        this.keys = [this.singlePlayerKey, this.multiPlayerKey, this.howToKey, this.increasePlayersKey, this.decreasePlayersKey];
+        this.keys = [this.singlePlayerKey, this.multiPlayerKey, this.howToKey, this.increasePlayersKey, this.decreasePlayersKey, this.muteKey];
     }
 
     processControls() {
