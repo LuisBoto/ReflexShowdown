@@ -1,9 +1,10 @@
 # Reflex Showdown
 
-Multiplayer duel reaction game 🗡️
-
-<p>
+<p align=center>
+    Multiplayer duel reaction game 🗡️
+    <br>
     <img src=".readme/banner.png" alt="Logo"/>
+    <img src="src/res/screenshot.png" alt="Game screenshot">
 </p>
 
 ## Be the faster swordsman!

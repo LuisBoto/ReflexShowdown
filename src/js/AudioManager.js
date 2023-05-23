@@ -3,40 +3,46 @@ import matchStartFile from "../res/matchStart.mp3";
 import launchSoundFile from "../res/launchSound.mp3";
 import slashFile from "../res/slash.mp3";
 
-let ambientMusic = new Audio(ambientWindFile);
-let matchStart = new Audio(matchStartFile);
-let launchSound = new Audio(launchSoundFile);
-let slashSound = new Audio(slashFile);
-ambientMusic.loop = true;
-matchStart.loop = false;
-launchSound.loop = false;
-slashSound.loop = false;
+let isMuted = false;
+const sounds = {
+    ambientMusic : new Audio(ambientWindFile),
+    matchStart : new Audio(matchStartFile),
+    launchSound : new Audio(launchSoundFile),
+    slashSound : new Audio(slashFile)
+}
+sounds.ambientMusic.loop = true;
 
 function playAmbientMusic() {
-    ambientMusic.volume = 0.25;
-    ambientMusic.play();
+    play("ambientMusic", 0.25);
 }
 
 function playMatchStart() {
-    matchStart.volume = 0.5;
-    matchStart.play();
+    play("matchStart", 0.5);
 }
 
 function playLaunchSound() {
-    launchSound.play();
+    play("launchSound");
 }
 
 function playSlashSound() {
-    slashSound.play();
+    play("slashSound");
 }
 
 function restartAudio() {
-    ambientMusic.pause();
-    ambientMusic.currentTime = 0;
-    launchSound.pause();
-    launchSound.currentTime = 0;
-    matchStart.pause();
-    matchStart.currentTime = 0;
+    Object.values(sounds).forEach(s => {
+        s.pause();
+        s.currentTime = 0;
+    });
+}
+
+function play(audio, volume = 1) {
+    sounds[audio].volume = volume;
+    if (!isMuted) 
+        sounds[audio].play();
+}
+
+function setMuted(muted) {
+    isMuted = muted;
 }
 
 export {
@@ -44,7 +50,8 @@ export {
     playMatchStart,
     playLaunchSound,
     playSlashSound,
-    restartAudio
+    restartAudio,
+    setMuted
 }
 
 
