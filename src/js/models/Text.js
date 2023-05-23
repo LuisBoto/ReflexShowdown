@@ -8,6 +8,7 @@ class Text {
         this.y = y;
         this.center = centered;
         this.size = "20px";
+        this.wordsPerLine = 10;
     }
 
     setValue(value) {
@@ -18,19 +19,22 @@ class Text {
         this.size = size + "px";
     }
 
+    setWordsPerLine(wordsPerLine) {
+        this.wordsPerLine = wordsPerLine;
+    }
+
     draw(color) {
         let workingY = this.y;
-        let maxWordsPerLine = 10;
         context.font = this.size + " monospace";
         context.fillStyle = color ? color : "white";
         context.textAlign = "left";
         if (this.center)
             context.textAlign = "center";
         let i = 0;
-        while (i < this.value.split(" ").length/maxWordsPerLine) {
-            let line = this.value.split(" ").slice(i*maxWordsPerLine, (i+1)*maxWordsPerLine).join(" ");
+        while (i < this.value.split(" ").length/this.wordsPerLine) {
+            let line = this.value.split(" ").slice(i*this.wordsPerLine, (i+1)*this.wordsPerLine).join(" ");
             this.doText(line, this.x, workingY);
-            workingY += parseInt(this.size.substring(0, 2))*1.05;
+            workingY += parseInt(this.size.substring(0, 2))*1.1;
             i += 1;
         }
     }
