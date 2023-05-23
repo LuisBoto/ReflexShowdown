@@ -1,4 +1,4 @@
-import "../css/canvasBackground.css";
+import "./css/canvasBackground.css";
 import { MenuLayer } from "./js/layers/MenuLayer.js";
 import { loadImages } from "./js/ResourceLoader.js";
 

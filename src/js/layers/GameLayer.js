@@ -24,7 +24,6 @@ class GameLayer extends Layer {
     initiate() {
         this.reset = -1;
         restartAudio();
-        playAmbientMusic();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
         this.slash = new Slash(images.slash2);
@@ -37,6 +36,7 @@ class GameLayer extends Layer {
         this.players.forEach(p => p.initiate())
 
         this.playStartAnimation();
+        playAmbientMusic();
     }
 
     createPlayers(humanPlayerNumber, cpuPlayerNumber) {
