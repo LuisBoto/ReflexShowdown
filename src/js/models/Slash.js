@@ -1,11 +1,12 @@
 import { Model } from "./Model.js";
 import { canvasHeight, canvasWidth } from "../../Main.js";
 import { context } from "../../Main.js";
+import { images } from "../Resources.js";
 
 class Slash extends Model {
 
-    constructor(imageRoute) {
-        super(imageRoute, 0, 0);
+    constructor() {
+        super(images.slash2, 0, 0);
         this.initiate();
     }
 
@@ -23,7 +24,7 @@ class Slash extends Model {
             context.save();
             context.translate(canvasWidth*0.5, canvasHeight*0.65);
             context.rotate(rotation * (Math.PI / 180));
-            this.drawResize(this.width*6, this.height*6);
+            this.drawProportionalToCanvas(0.8);
             context.restore();
             this.frames -= 1;
         }

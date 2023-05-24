@@ -64,8 +64,8 @@ class Player extends Model {
 
     drawScore(positionY) {
         new Model(this.assets.base, canvasWidth*0.08, positionY).drawProportionalToCanvas(this.canvasProportion*2);
-        let text = new StrokedText(this.getTime() > 0 ? this.getTime().toString().concat("ms") : "-", canvasWidth*0.13, positionY);
-        text.setSize(15);
+        let text = new StrokedText(this.getTime() > 0 ? this.getTime().toString().concat("ms") : "-", canvasWidth*0.11, positionY);
+        text.setSize(20);
         text.draw();
     }
 

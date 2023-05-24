@@ -26,8 +26,9 @@ class GameLayer extends Layer {
         restartAudio();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
-        this.slash = new Slash(images.slash2);
+        this.slash = new Slash();
         this.winnerTime = new StrokedText("", canvasWidth*0.5, canvasHeight*0.1, true);
+        this.winnerTime.setSize(canvasHeight/15);
         this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, KEYS.ESCAPE, "Back to menu", "esc");
 
         this.awaitingInput = false;

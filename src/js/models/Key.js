@@ -1,6 +1,7 @@
 import { images } from "../Resources.js";
 import { Model } from "./Model.js";
 import { Text } from "./Text.js";
+import { StrokedText } from "./StrokedText.js";
 import { getButtonControl } from "../ControlEvents.js";
 import { Control } from "../ControlEvents.js";
 
@@ -76,7 +77,7 @@ class Key extends Model {
 
     setTag(tagText) {
         this.tagged = tagText;
-        if (this.tagged) this.tag = new Text(tagText, this.x, this.y+this.height, true);
+        if (this.tagged) this.tag = new StrokedText(tagText, this.x, this.y+this.height, true);
     }
 }
 

@@ -5,7 +5,6 @@ class StrokedText extends Text {
 
     constructor(value, x, y, centered) {
         super(value, x, y, centered);
-        this.setSize(50);
     }
 
     draw(innerColor, outerColor, strokeWidth) {

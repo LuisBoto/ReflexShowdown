@@ -1,5 +1,5 @@
 import { Player } from "./Player.js";
-import { Text } from "./Text.js";
+import { StrokedText } from "./StrokedText.js";
 import { Control } from "../ControlEvents.js";
 
 class PlayerCpu extends Player {
@@ -11,7 +11,7 @@ class PlayerCpu extends Player {
     initiate() {
         super.initiate();
         this.timeTextYModifier = this.keyYModifier;
-        this.timeText = new Text("", this.x, this.y+this.timeTextYModifier, true);
+        this.timeText = new StrokedText("", this.x, this.y+this.timeTextYModifier, true);
         this.score = Math.floor(Math.random()*400 + 150);
     }
 
