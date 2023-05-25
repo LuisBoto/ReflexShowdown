@@ -42,6 +42,7 @@ class GameLayer extends Layer {
 
     createPlayers(humanPlayerNumber, cpuPlayerNumber) {
         this.players = [];
+        playerAssets.sort(() => Math.random() - 0.5);
         let degreesPerPlayer = 360 / (humanPlayerNumber + cpuPlayerNumber);
 
         for (let i = 0; i < humanPlayerNumber + cpuPlayerNumber; i++) {
@@ -119,7 +120,6 @@ class GameLayer extends Layer {
         this.matchStartAnimation = new MatchStartAnimation();
         setTimeout(() => {
                 this.awaitingInput = true;
-                console.log("Awaiting input");
             }, 2000);
     }
 
