@@ -28,7 +28,7 @@ class MenuLayer extends Layer {
 
         this.playerNumber = 2;
         this.playerNumberText = new StrokedText("Players: 2", canvasWidth*0.5, canvasHeight*0.5, true);
-        this.playerNumberText.setSize(28);
+        this.playerNumberText.setSize(canvasHeight/20);
 
         this.keys = [this.singlePlayerKey, this.multiPlayerKey, this.howToKey, this.increasePlayersKey, this.decreasePlayersKey, this.muteKey];
     }

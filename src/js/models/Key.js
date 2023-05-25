@@ -4,6 +4,7 @@ import { Text } from "./Text.js";
 import { StrokedText } from "./StrokedText.js";
 import { getButtonControl } from "../ControlEvents.js";
 import { Control } from "../ControlEvents.js";
+import { canvasHeight } from "../../Main.js";
 
 class Key extends Model {
 
@@ -77,7 +78,7 @@ class Key extends Model {
 
     setTag(tagText) {
         this.tagged = tagText;
-        if (this.tagged) this.tag = new StrokedText(tagText, this.x, this.y+this.height, true);
+        if (this.tagged) this.tag = new StrokedText(tagText, this.x, this.y+canvasHeight/10, true);
     }
 }
 

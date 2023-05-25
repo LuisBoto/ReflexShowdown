@@ -101,7 +101,7 @@ class GameLayer extends Layer {
         this.backToMenuKey.draw();
 
         if (this.signal && !this.decided) 
-            this.exclamation.draw();
+            this.exclamation.drawProportionalToCanvas(2);
         this.winnerTime.draw("yellow", "black");
 
         if (this.decided && this.signal) {
