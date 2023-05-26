@@ -15,6 +15,7 @@ class HowToLayer extends Layer {
     }
 
     initiate() {
+        super.initiate();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.backToMenuKey = new Key(getCanvasProportionSize(5), getCanvasProportionSize(5), KEYS.ESCAPE, "Back to menu", "esc");
 

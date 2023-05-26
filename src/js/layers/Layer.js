@@ -6,8 +6,11 @@ class Layer {
         cleanControls();
     }
 
-    update (){
+    initiate() {
+        cleanControls();
+    }
 
+    update () {
     }
 
     draw (){

@@ -17,6 +17,7 @@ class MenuLayer extends Layer {
     }
     
     initiate() {
+        super.initiate();
         restartAudio();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.singlePlayerKey = new Key(canvasWidth*0.3, canvasHeight*0.3, KEYS.Q, "Singleplayer");

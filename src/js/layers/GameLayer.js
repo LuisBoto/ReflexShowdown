@@ -24,6 +24,7 @@ class GameLayer extends Layer {
     }
 
     initiate() {
+        super.initiate();
         this.createPlayers();
         this.reset = -1;
         restartAudio();
