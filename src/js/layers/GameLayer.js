@@ -17,11 +17,14 @@ class GameLayer extends Layer {
 
     constructor(humanPlayerNumber, cpuPlayerNumber) {
         super();
-        this.createPlayers(humanPlayerNumber, cpuPlayerNumber);
+        playerAssets.sort(() => Math.random() - 0.5);
+        this.humanPlayerNumber = humanPlayerNumber;
+        this.cpuPlayerNumber = cpuPlayerNumber;
         this.initiate();
     }
 
     initiate() {
+        this.createPlayers();
         this.reset = -1;
         restartAudio();
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
@@ -40,20 +43,19 @@ class GameLayer extends Layer {
         playAmbientMusic();
     }
 
-    createPlayers(humanPlayerNumber, cpuPlayerNumber) {
+    createPlayers() {
         this.players = [];
-        playerAssets.sort(() => Math.random() - 0.5);
-        let degreesPerPlayer = 360 / (humanPlayerNumber + cpuPlayerNumber);
+        let degreesPerPlayer = 360 / (this.humanPlayerNumber + this.cpuPlayerNumber);
 
-        for (let i = 0; i < humanPlayerNumber + cpuPlayerNumber; i++) {
+        for (let i = 0; i < this.humanPlayerNumber + this.cpuPlayerNumber; i++) {
             let currentAngle = (360-(i*degreesPerPlayer+degreesPerPlayer/2));
             let currentRadians = currentAngle * Math.PI/180 - Math.PI/2;
             let x = canvasWidth/4*Math.cos(currentRadians)+canvasWidth/2;
             let y = canvasHeight/4*Math.sin(currentRadians)+canvasHeight/2;
-            if (i < humanPlayerNumber) 
+            if (i < this.humanPlayerNumber) 
                 this.players.push(new Player(playerAssets[i%playerAssets.length], x, y, degreesPerPlayer, currentAngle));
             else
-                this.players.push(new PlayerCpu(playerAssets[(humanPlayerNumber-1+i)%playerAssets.length], x, y));
+                this.players.push(new PlayerCpu(playerAssets[(this.humanPlayerNumber-1+i)%playerAssets.length], x, y));
         }
     }
 
