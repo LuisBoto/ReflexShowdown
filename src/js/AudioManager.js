@@ -38,7 +38,11 @@ function restartAudio() {
 function play(audio, volume = 1) {
     sounds[audio].volume = volume;
     if (!muted) 
-        sounds[audio].play();
+        try { 
+            sounds[audio].play(); }
+        catch (err) {
+            console.log("Autoplay error");
+        }
 }
 
 function isMuted() {

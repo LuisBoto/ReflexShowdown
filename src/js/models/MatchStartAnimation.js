@@ -11,9 +11,9 @@ class MatchStartAnimation extends Model {
     }
 
     initiate() {
-        this.bg = new SlidingModel(images.matchStartBackground, 0, canvasHeight*0.9, 15, 3);
-        this.mg = new SlidingModel(images.matchStartMiddleground, 0, canvasHeight, -17, 2.5)
+        this.mg = new SlidingModel(images.matchStartMiddleground, canvasWidth, canvasHeight, -17, 2.5)
         this.fg = new SlidingModel(images.matchStartForeground, 0, canvasHeight, 30, 1.5);
+        this.bg = new SlidingModel(images.matchStartBackground, 0, canvasHeight-(this.fg.height/2), 15, 3);
     }
 
     update() {
@@ -68,7 +68,7 @@ class SlidingModel extends Model {
         let duplicates = (canvasWidth / this.width) + 1;
         for (let i = 0; i <= duplicates; i++) {
             super.draw();
-            this.x += this.width;
+            this.x += this.slideSpeed > 0 ? this.width : -this.width;
         }
         this.x = initialX;
     }
