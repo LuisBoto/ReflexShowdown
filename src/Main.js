@@ -36,6 +36,10 @@ function setLayer(newLayer) {
     layer = newLayer;
 }
 
+function getCanvasProportionSize(proportion) {
+    return Math.sqrt(canvasHeight*canvasWidth)/proportion/2;
+}
+
 window.addEventListener('load', resize, false);
 loadImages(0, startGame);
 window.addEventListener('resize', () => {resize(); layer.initiate();}, false);
@@ -45,5 +49,6 @@ export {
     context,
     canvasWidth,
     canvasHeight,
-    setLayer
+    setLayer,
+    getCanvasProportionSize
 }

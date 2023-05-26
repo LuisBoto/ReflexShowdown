@@ -1,4 +1,4 @@
-import { context } from "../../Main";
+import { context, getCanvasProportionSize } from "../../Main";
 
 class Text {
 
@@ -7,7 +7,7 @@ class Text {
         this.x = x;
         this.y = y;
         this.center = centered;
-        this.size = "20px";
+        this.setSize(getCanvasProportionSize(25));
         this.wordsPerLine = 10;
     }
 
@@ -34,7 +34,7 @@ class Text {
         while (i < this.value.split(" ").length/this.wordsPerLine) {
             let line = this.value.split(" ").slice(i*this.wordsPerLine, (i+1)*this.wordsPerLine).join(" ");
             this.doText(line, this.x, workingY);
-            workingY += parseInt(this.size.substring(0, 2))*1.1;
+            workingY += getCanvasProportionSize(parseInt(this.size.substring(0, 2)));
             i += 1;
         }
     }

@@ -4,7 +4,7 @@ import { playerAssets } from "../ResourceLoader.js";
 import { images } from "../Resources.js";
 import { Model } from "../models/Model.js";
 import { Slash } from "../models/Slash.js";
-import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
+import { canvasHeight, canvasWidth, setLayer, getCanvasProportionSize } from "../../Main.js";
 import { MenuLayer } from "./MenuLayer.js";
 import { Key } from "../models/Key.js";
 import { StrokedText } from "../models/StrokedText.js";
@@ -27,9 +27,9 @@ class GameLayer extends Layer {
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
         this.exclamation = new Model(images.exclamation, canvasWidth*0.5, canvasHeight*0.5);
         this.slash = new Slash();
-        this.winnerTime = new StrokedText("", canvasWidth*0.5, canvasHeight*0.1, true);
-        this.winnerTime.setSize(canvasHeight/15);
-        this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, KEYS.ESCAPE, "Back to menu", "esc");
+        this.winnerTime = new StrokedText("", canvasWidth*0.5, getCanvasProportionSize(10), true);
+        this.winnerTime.setSize(getCanvasProportionSize(18));
+        this.backToMenuKey = new Key(getCanvasProportionSize(5), getCanvasProportionSize(5), KEYS.ESCAPE, "Back to menu", "esc");
 
         this.awaitingInput = false;
         this.signal = false;

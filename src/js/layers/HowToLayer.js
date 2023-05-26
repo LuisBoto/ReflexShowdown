@@ -1,4 +1,4 @@
-import { canvasHeight, canvasWidth, setLayer } from "../../Main.js";
+import { canvasHeight, canvasWidth, setLayer, getCanvasProportionSize } from "../../Main.js";
 import { StrokedText } from "../models/StrokedText.js";
 import { Layer } from "./Layer.js";
 import { MenuLayer } from "./MenuLayer.js";
@@ -16,9 +16,9 @@ class HowToLayer extends Layer {
 
     initiate() {
         this.background = new Model(images.background, canvasWidth*0.5, canvasHeight*0.5);
-        this.backToMenuKey = new Key(canvasWidth*0.075, canvasHeight*0.1, KEYS.ESCAPE, "Back to menu", "esc");
+        this.backToMenuKey = new Key(getCanvasProportionSize(5), getCanvasProportionSize(5), KEYS.ESCAPE, "Back to menu", "esc");
 
-        this.playerModel = new Model(images.player1Win, canvasWidth*0.75, canvasHeight*0.45);
+        this.playerModel = new Model(images.player1Win, canvasWidth*0.8, canvasHeight*0.45);
         this.screenshot = new Model(images.screenshot, canvasWidth*0.25, canvasHeight*0.75);
 
         let basics = "Stay sharp and prove how fast you are! A match begins with a stare down, waiting for the signal to attack. Once it comes up, react as fast as you can and press your button or click or your character to beat your opponent!";
@@ -26,8 +26,8 @@ class HowToLayer extends Layer {
         this.titleText = new StrokedText("How to play:", canvasWidth*0.5, canvasHeight*0.15, true);
         this.basicsParagraph = new StrokedText(basics, canvasWidth*0.1, canvasHeight*0.4, false);
         this.multiParagrapgh = new StrokedText(multi, canvasWidth*0.45, canvasHeight*0.7, false);
-        this.basicsParagraph.setSize(canvasHeight/30);
-        this.multiParagrapgh.setSize(canvasHeight/30);
+        this.basicsParagraph.setSize(getCanvasProportionSize(30));
+        this.multiParagrapgh.setSize(getCanvasProportionSize(30));
         this.multiParagrapgh.setWordsPerLine(8);
     }
 

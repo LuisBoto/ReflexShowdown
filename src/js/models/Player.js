@@ -1,5 +1,5 @@
 import { Model } from "./Model.js";
-import { canvasHeight, canvasWidth, context } from "../../Main.js";
+import { canvasHeight, canvasWidth, context, getCanvasProportionSize } from "../../Main.js";
 import { Key } from "./Key.js";
 import { getPlayerControl } from "../ControlEvents.js";
 import { StrokedText } from "./StrokedText.js";
@@ -24,7 +24,7 @@ class Player extends Model {
         this.control.enableTimeMeasurement = true;
         this.launchTime = -1;
         this.attacked = false;
-        this.keyYModifier = canvasHeight/7;
+        this.keyYModifier = getCanvasProportionSize(7);
         this.key = new Key(this.x, this.y+this.keyYModifier, this.control);
         this.canvasProportion = 3;
     }
@@ -63,9 +63,9 @@ class Player extends Model {
     }
 
     drawScore(positionY) {
-        new Model(this.assets.base, canvasWidth*0.08, positionY).drawProportionalToCanvas(this.canvasProportion*2);
-        let text = new StrokedText(this.getTime() > 0 ? this.getTime().toString().concat("ms") : "-", canvasWidth*0.11, positionY);
-        text.setSize(canvasHeight/35);
+        new Model(this.assets.base, getCanvasProportionSize(10), positionY).drawProportionalToCanvas(this.canvasProportion*1.5);
+        let text = new StrokedText(this.getTime() > 0 ? this.getTime().toString().concat("ms") : "-", getCanvasProportionSize(5), positionY);
+        text.setSize(getCanvasProportionSize(35));
         text.draw();
     }
 

@@ -1,4 +1,4 @@
-import { context } from "../../Main";
+import { context, getCanvasProportionSize } from "../../Main";
 import { Text } from "./Text.js";
 
 class StrokedText extends Text {
@@ -8,7 +8,7 @@ class StrokedText extends Text {
     }
 
     draw(innerColor, outerColor, strokeWidth) {
-        context.lineWidth = strokeWidth ? strokeWidth : 8; 
+        context.lineWidth = strokeWidth ? strokeWidth : getCanvasProportionSize(100); 
         context.strokeStyle = outerColor ? outerColor : "black";
         context.miterLimit=2;
         super.draw(innerColor ? innerColor : "white");

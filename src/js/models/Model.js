@@ -1,5 +1,5 @@
 import { cache } from "../ResourceLoader.js";
-import { context, canvasHeight } from "../../Main.js";
+import { context, canvasHeight, canvasWidth } from "../../Main.js";
 
 class Model {
 
@@ -38,7 +38,7 @@ class Model {
     }
 
     drawProportionalToCanvas(proportion) {
-        let sizeRelativeToCanvas = canvasHeight / proportion;
+        let sizeRelativeToCanvas = Math.sqrt(canvasHeight*canvasWidth) / proportion / 2;
         this.drawResize(sizeRelativeToCanvas*this.width/this.height, sizeRelativeToCanvas);
     }
 
