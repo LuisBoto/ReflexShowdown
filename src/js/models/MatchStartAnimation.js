@@ -38,8 +38,8 @@ class MatchStartAnimation extends Model {
     }
 
     #getFinalGradientColor() {
-        let finalColor = (canvasHeight - this.bg.y >= 0 ? canvasHeight - this.fg.y : 0).toString(16).split('.')[0];
-        return "#000000".concat(finalColor.length == 2 ? finalColor : finalColor.concat("0"));
+        let finalColor = (canvasHeight - this.bg.y >= 0 ? canvasHeight - this.bg.y : 0).toString(16).split('.')[0];
+        return "#000000".concat(finalColor.length < 2 ? "0".concat(finalColor) : finalColor.length > 2 ? "ff" : finalColor);
     }
 
     isFinished() {
