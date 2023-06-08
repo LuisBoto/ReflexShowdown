@@ -26,7 +26,7 @@ class HowToLayer extends Layer {
         let multi = "Play against your friends locally, up to 6 players, to compete for the best time and see who has lightining fast reflexes!"
         this.titleText = new StrokedText("How to play:", canvasWidth*0.5, canvasHeight*0.15, true);
         this.basicsParagraph = new StrokedText(basics, canvasWidth*0.5, canvasHeight*0.3, true);
-        this.multiParagrapgh = new StrokedText(multi, canvasWidth*0.5, canvasHeight*0.6, true);
+        this.multiParagrapgh = new StrokedText(multi, canvasWidth*0.5, canvasHeight*0.7, true);
         this.basicsParagraph.setSize(getCanvasProportionSize(30));
         this.multiParagrapgh.setSize(getCanvasProportionSize(30));
         this.multiParagrapgh.setWordsPerLine(8);
