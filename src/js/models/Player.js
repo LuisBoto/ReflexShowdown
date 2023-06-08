@@ -90,6 +90,7 @@ class Player extends Model {
         this.setImage(this.assets.win);
         this.#calculateFinalVictoryPosition();
         this.key.setCoords(this.x, this.y+this.keyYModifier);
+        this.isVictorious = true;
     }
 
     doDefeat() {

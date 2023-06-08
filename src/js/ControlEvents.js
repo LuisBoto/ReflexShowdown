@@ -96,6 +96,7 @@ const KEYS = {
     M: 77,
     Q: 81,
     Z: 90,
+    T: 84,
 }
 const playerControlKeyCodes = [KEYS.P, KEYS.L, KEYS.M, KEYS.Z, KEYS.A, KEYS.Q];
 const controls = [];
