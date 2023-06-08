@@ -24,6 +24,7 @@ class Player extends Model {
         this.control.enableTimeMeasurement = true;
         this.launchTime = -1;
         this.attacked = false;
+        this.isVictorious = false;
         this.keyYModifier = getCanvasProportionSize(7);
         this.key = new Key(this.x, this.y+this.keyYModifier, this.control);
         this.canvasProportion = 3;
